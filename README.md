@@ -22,7 +22,7 @@ cdk-lakeformation-permissions/source/cdk.json
 	{
   		"app": "python3 app.py",
   		"context": {
-      			"rollup_region": "us_east_1",
+			"rollup_region": "us_east_1",
 			"rollup_region": "us-east-1",
 			"rollup_region": "us-east-1",
 			"LakeFormationAdminRoleARN": "arn:aws:iam::ACCOUNTID:role/ROLENAME",
