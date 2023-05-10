@@ -4,19 +4,16 @@ from pathlib import Path
 import os
 import sys
 import shutil
-import argparse
+import json
 
-cliparser = argparse.ArgumentParser( description="Amazon Quicksight Asset Deployment Tool")
-cliparser.add_argument('--account', help="Amazon account ID")                   # Account Id for Amazon Quicksight
-cliparser.add_argument('--region', help="Amazon account region")                # Region for Amazon Quicksight
-cliparser.add_argument('--slregion', help="Amazon account region")                # Roll up region for Amazon Security Lake
-cliparser.add_argument('--principal', help="Amazon Security Lake region")        # Principal for Amazon Quicksight
-args = cliparser.parse_args()
 
-aws_region = args.region
-aws_sl_region = args.region
-aws_account_id = args.account
-aws_principal_id = args.principal
+with open('cdk-lakeformation-permissions/source/cdk.json') as file:
+    parameters = json.load(file)
+
+aws_region = parameters['context']['region']
+aws_sl_region = parameters['context']['slregion']
+aws_account_id = parameters['context']['AWSAccountID']
+aws_principal_id = parameters['context']['QuickSightUserARN']
     
 def main(aws_region, aws_account_id, aws_principal_id):
 
