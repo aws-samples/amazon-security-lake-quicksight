@@ -6,7 +6,6 @@ Amazon Security Lake Data Validation
 2. [Usage Guide](#Usage)
 3. [Examples](#Examples)
 4. [License](#License)
-5. [Checksum](#Checksum)
 
 ## About this Repo <a name="About"></a>
 
@@ -54,7 +53,6 @@ Below we can see an expected validation result by executing the script in the sa
 	python sample.py
 
 The expected output from running the sample is as follows:
-
 
 
 ### Official Resources
