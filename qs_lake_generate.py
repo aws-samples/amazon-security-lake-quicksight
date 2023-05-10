@@ -7,12 +7,14 @@ import shutil
 import argparse
 
 cliparser = argparse.ArgumentParser( description="Amazon Quicksight Asset Deployment Tool")
-cliparser.add_argument('--account', help="Amazon account ID")                   # used for api calls and sanitize
-cliparser.add_argument('--region', help="Amazon account region")                # used for sanitize
-cliparser.add_argument('--principal', help="Amazon Security Lake region")        # used for Amazon Security Lake
+cliparser.add_argument('--account', help="Amazon account ID")                   # Account Id for Amazon Quicksight
+cliparser.add_argument('--region', help="Amazon account region")                # Region for Amazon Quicksight
+cliparser.add_argument('--slregion', help="Amazon account region")                # Roll up region for Amazon Security Lake
+cliparser.add_argument('--principal', help="Amazon Security Lake region")        # Principal for Amazon Quicksight
 args = cliparser.parse_args()
 
 aws_region = args.region
+aws_sl_region = args.region
 aws_account_id = args.account
 aws_principal_id = args.principal
     
@@ -39,13 +41,13 @@ def main(aws_region, aws_account_id, aws_principal_id):
     # Fetching all the files to directory
     for file_name in files:
        shutil.copy(TEMPLATES_DIR+file_name, STAGING_DIR+file_name)
-       os.system(f"python {SCRIPTS_DIR}qstool.py --verbose --assets {STAGING_DIR+file_name} sanitize all --principal {aws_principal_id}  --region {aws_region} --account {aws_account_id}")
-       os.system(f"python {SCRIPTS_DIR}qstool.py --verbose --assets {STAGING_DIR+file_name} delete all --confirm -i")
+       os.system(f"python3 {SCRIPTS_DIR}qstool.py --verbose --assets {STAGING_DIR+file_name} sanitize all --principal {aws_principal_id}  --region {aws_region} --slregion {aws_sl_region} --account {aws_account_id}")
+       os.system(f"python3 {SCRIPTS_DIR}qstool.py --verbose --assets {STAGING_DIR+file_name} delete all --confirm -i")
        
     for file_name in files:
        shutil.copy(TEMPLATES_DIR+file_name, STAGING_DIR+file_name)
-       os.system(f"python {SCRIPTS_DIR}qstool.py --verbose --assets {STAGING_DIR+file_name} sanitize all --principal {aws_principal_id}  --region {aws_region} --account {aws_account_id}")
-       os.system(f"python {SCRIPTS_DIR}qstool.py --verbose --assets {STAGING_DIR+file_name} create all -i")
+       os.system(f"python3 {SCRIPTS_DIR}qstool.py --verbose --assets {STAGING_DIR+file_name} sanitize all --principal {aws_principal_id}  --region {aws_region} --slregion {aws_sl_region} --account {aws_account_id}")
+       os.system(f"python3 {SCRIPTS_DIR}qstool.py --verbose --assets {STAGING_DIR+file_name} create all -i")
        
 if __name__ == '__main__':
 
