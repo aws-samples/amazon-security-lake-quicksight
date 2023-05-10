@@ -21,9 +21,9 @@ cdk-lakeformation-permissions/source/cdk.json
 	{
   		"app": "python3 app.py",
   		"context": {
-			"rollup_region": "us_east_1",
-			"rollup_region": "us-east-1",
-			"rollup_region": "us-east-1",
+			"rollup_region": "ROLLUPREGION",
+			"qs_region": "QSREGION",
+			"sl_region": "SLREGION",
 			"LakeFormationAdminRoleARN": "arn:aws:iam::ACCOUNTID:role/ROLENAME",
 			"SecurityLakeAccountID": SECURITYLAKEACCOUNTID,
 			"QuickSightUserARN": "QUICKSIGHTUSERARN"
@@ -39,7 +39,7 @@ cdk-lakeformation-permissions/source/runCommands.sh
 	echo "--------------------------------"
 	echo "Finished cdk deploy"
 	echo "--------------------------------"
-	python3 ../../qs_lake_generate.py --account ACCOUNTID  --principal QUICKSIGHTUSERARN --region us-east-1
+	python3 ../../qs_lake_generate.py --account ACCOUNTID  --principal QUICKSIGHTUSERARN --region QSREGION --slregion SLREGION
 
 in the source dir run:
 
@@ -48,11 +48,35 @@ in the source dir run:
 
 ## Examples <a name="Examples"></a>
 
-Below we can see an expected validation result by executing the script in the samples folder: path/to/samples/sample.py
+cdk-lakeformation-permissions/source/cdk.json
+  
+	{
+  		"app": "python3 app.py",
+  		"context": {
+			"rollup_region": "us_east_1",
+			"qs_region": "us-east-1",
+			"sl_region": "us-east-1",
+			"LakeFormationAdminRoleARN": "arn:aws:iam::ACCOUNTID:role/example-role",
+			"SecurityLakeAccountID": 1111222233334444,
+			"QuickSightUserARN": "arn:aws:quicksight:us-east-1:1111222233334444:user/default/Admin/example-role"
+   	 	}
+  	}
+  
+cdk-lakeformation-permissions/source/runCommands.sh
 
-	python sample.py
+	echo "--------------------------------"
+	echo "Running cdk deploy --all command"
+	echo "--------------------------------"
+	cdk deploy --all -v --debug
+	echo "--------------------------------"
+	echo "Finished cdk deploy"
+	echo "--------------------------------"
+	python3 ../../qs_lake_generate.py --account ACCOUNTID  --principal QUICKSIGHTUSERARN --region us-east-1 --slregion us-east-1
 
-The expected output from running the sample is as follows:
+in the source dir run:
+
+	cdk synth
+	./runCommand.sh
 
 
 ### Official Resources
