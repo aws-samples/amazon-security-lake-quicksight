@@ -5,4 +5,4 @@ cdk deploy --all -v --debug
 echo "--------------------------------"
 echo "Finished cdk deploy"
 echo "--------------------------------"
-python3 ../../qs_lake_generate.py --account ACCOUNTID  --principal QUICKSIGHTUSERARN --slregion us-east-1
+python3 ../../qs_lake_generate.py --account ACCOUNTID  --principal QUICKSIGHTUSERARN --region us-east-1 --slregion us-east-1 
