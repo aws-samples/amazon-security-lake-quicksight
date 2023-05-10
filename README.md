@@ -22,13 +22,14 @@ cdk-lakeformation-permissions/source/cdk.json
   		"app": "python3 app.py",
   		"context": {
 			"rollup_region": "ROLLUPREGION",
-			"qs_region": "QSREGION",
-			"sl_region": "SLREGION",
+			"region": "QSREGION",
+			"slregion": "SLREGION",
 			"LakeFormationAdminRoleARN": "arn:aws:iam::ACCOUNTID:role/ROLENAME",
 			"SecurityLakeAccountID": SECURITYLAKEACCOUNTID,
 			"QuickSightUserARN": "QUICKSIGHTUSERARN"
    	 	}
   	}
+	
   
 cdk-lakeformation-permissions/source/runCommands.sh
 
@@ -54,8 +55,8 @@ cdk-lakeformation-permissions/source/cdk.json
   		"app": "python3 app.py",
   		"context": {
 			"rollup_region": "us_east_1",
-			"qs_region": "us-east-1",
-			"sl_region": "us-east-1",
+			"region": "us-east-1",
+			"slregion": "us-east-1",
 			"LakeFormationAdminRoleARN": "arn:aws:iam::ACCOUNTID:role/example-role",
 			"SecurityLakeAccountID": 1111222233334444,
 			"QuickSightUserARN": "arn:aws:quicksight:us-east-1:1111222233334444:user/default/Admin/example-role"
