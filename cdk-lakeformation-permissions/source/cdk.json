@@ -2,8 +2,11 @@
   "app": "python3 app.py",
   "context": {
     "rollup_region": "us_east_1",
+    "region": "us-east-1",
+    "slregion": "us-east-1",
     "LakeFormationAdminRoleARN": "arn:aws:iam::ACCOUNTID:role/ROLENAME",
     "SecurityLakeAccountID": SECURITYLAKEACCOUNTID,
-    "QuickSightUserARN": "QUICKSIGHTUSERARN"
+    "AWSAccountID":TARGETAWSACCOUNTID,
+    "QuickSightUserARN": "QUICKSIGHTUSERARN"   
   }
 }
