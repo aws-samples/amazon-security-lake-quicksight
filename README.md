@@ -19,31 +19,33 @@ We welcome contributions to this repo in the form of fixes to existing examples 
 
 cdk-lakeformation-permissions/source/cdk.json
   
-  {
-    "app": "python3 app.py",
-    "context": {
-      "rollup_region": "us_east_1",
-      "rollup_region": "us-east-1",
-      "rollup_region": "us-east-1",
-      "LakeFormationAdminRoleARN": "arn:aws:iam::ACCOUNTID:role/ROLENAME",
-      "SecurityLakeAccountID": SECURITYLAKEACCOUNTID,
-      "QuickSightUserARN": "QUICKSIGHTUSERARN"
-    }
-  }
+	{
+  		"app": "python3 app.py",
+  		"context": {
+      			"rollup_region": "us_east_1",
+			"rollup_region": "us-east-1",
+			"rollup_region": "us-east-1",
+			"LakeFormationAdminRoleARN": "arn:aws:iam::ACCOUNTID:role/ROLENAME",
+			"SecurityLakeAccountID": SECURITYLAKEACCOUNTID,
+			"QuickSightUserARN": "QUICKSIGHTUSERARN"
+   	 	}
+  	}
   
 cdk-lakeformation-permissions/source/runCommands.sh
-    echo "--------------------------------"
-    echo "Running cdk deploy --all command"
-    echo "--------------------------------"
-    cdk deploy --all -v --debug
-    echo "--------------------------------"
-    echo "Finished cdk deploy"
-    echo "--------------------------------"
-    python3 ../../qs_lake_generate.py --account ACCOUNTID  --principal QUICKSIGHTUSERARN --region us-east-1
+
+	echo "--------------------------------"
+	echo "Running cdk deploy --all command"
+	echo "--------------------------------"
+	cdk deploy --all -v --debug
+	echo "--------------------------------"
+	echo "Finished cdk deploy"
+	echo "--------------------------------"
+	python3 ../../qs_lake_generate.py --account ACCOUNTID  --principal QUICKSIGHTUSERARN --region us-east-1
 
 in the source dir run:
-    cdk synth
-    ./runCommand.sh
+
+	cdk synth
+	./runCommand.sh
 
 ## Examples <a name="Examples"></a>
 
