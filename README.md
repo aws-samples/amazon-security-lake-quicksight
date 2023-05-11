@@ -19,65 +19,75 @@ We welcome contributions to this repo in the form of fixes to existing examples 
 cdk-lakeformation-permissions/source/cdk.json
   
 	{
-  		"app": "python3 app.py",
-  		"context": {
-			"rollup_region": "ROLLUPREGION",
-			"region": "QSREGION",
-			"slregion": "SLREGION",
-			"LakeFormationAdminRoleARN": "arn:aws:iam::ACCOUNTID:role/ROLENAME",
-			"SecurityLakeAccountID": SECURITYLAKEACCOUNTID,
-			"QuickSightUserARN": "QUICKSIGHTUSERARN"
-   	 	}
-  	}
+	  "app": "python3 app.py",
+	  "context": {
+	    "rollup_region": "<region>",
+	    "region": "<region>",
+	    "slregion": "<region>",
+	    "LakeFormationAdminRoleARN": "arn:aws:iam::123456789012:role/<Rolename>",
+	    "SecurityLakeAccountID": 123456789012,
+	    "AWSAccountID":555555555555,
+	    "QuickSightUserARN": "arn:aws:quicksight:<Region>:123456789012:user/default/<PrincipalId>"   
+	  }
+	}
 	
   
-cdk-lakeformation-permissions/source/runCommands.sh
+scripts/qsdeploy.sh
+	#!/bin/bash
+	#parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+	cd "$parent_path/source"
 
-	echo "--------------------------------"
 	echo "Running cdk deploy --all command"
-	echo "--------------------------------"
-	cdk deploy --all -v --debug
-	echo "--------------------------------"
+	echo "--------------------------------------------"
+	echo " "
+	cdk deploy --all -v
 	echo "Finished cdk deploy"
-	echo "--------------------------------"
-	python3 ../../qs_lake_generate.py --account ACCOUNTID  --principal QUICKSIGHTUSERARN --region QSREGION --slregion SLREGION
+	echo "--------------------------------------------"
 
-in the source dir run:
+	echo "Running QuickSight Generate Dashboards"
+	echo "--------------------------------------------"
+	echo " "
+	python3 createobjects.py
+	echo "Finished QuickSight Generate Dashboards"
+	echo "--------------------------------------------"
 
-	cdk synth
-	./runCommand.sh
 
 ## Examples <a name="Examples"></a>
 
 cdk-lakeformation-permissions/source/cdk.json
   
 	{
-  		"app": "python3 app.py",
-  		"context": {
-			"rollup_region": "us_east_1",
-			"region": "us-east-1",
-			"slregion": "us-east-1",
-			"LakeFormationAdminRoleARN": "arn:aws:iam::ACCOUNTID:role/example-role",
-			"SecurityLakeAccountID": 1111222233334444,
-			"QuickSightUserARN": "arn:aws:quicksight:us-east-1:1111222233334444:user/default/Admin/example-role"
-   	 	}
-  	}
+	  "app": "python3 app.py",
+	  "context": {
+	    "rollup_region": "<region>",
+	    "region": "<region>",
+	    "slregion": "<region>",
+	    "LakeFormationAdminRoleARN": "arn:aws:iam::123456789012:role/<Rolename>",
+	    "SecurityLakeAccountID": 123456789012,
+	    "AWSAccountID":555555555555,
+	    "QuickSightUserARN": "arn:aws:quicksight:<Region>:123456789012:user/default/<PrincipalId>"   
+	  }
+	}
   
-cdk-lakeformation-permissions/source/runCommands.sh
+scripts/qsdeploy.sh
 
-	echo "--------------------------------"
+	#!/bin/bash
+	#parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+	cd "$parent_path/source"
+
 	echo "Running cdk deploy --all command"
-	echo "--------------------------------"
-	cdk deploy --all -v --debug
-	echo "--------------------------------"
+	echo "--------------------------------------------"
+	echo " "
+	cdk deploy --all -v
 	echo "Finished cdk deploy"
-	echo "--------------------------------"
-	python3 ../../qs_lake_generate.py --account ACCOUNTID  --principal QUICKSIGHTUSERARN --region us-east-1 --slregion us-east-1
+	echo "--------------------------------------------"
 
-in the source dir run:
-
-	cdk synth
-	./runCommand.sh
+	echo "Running QuickSight Generate Dashboards"
+	echo "--------------------------------------------"
+	echo " "
+	python3 createobjects.py
+	echo "Finished QuickSight Generate Dashboards"
+	echo "--------------------------------------------"
 
 
 ### Official Resources
