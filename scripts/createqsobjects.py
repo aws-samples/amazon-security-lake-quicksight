@@ -7,7 +7,8 @@ import shutil
 import json
 
 
-with open('../source/cdk.json') as file:
+INPUTS_DIR = str((Path(os.path.abspath(__file__))).parent.parent).replace('\\', '/') + '/cdk-lakeformation-permissions/source/cdk.json'
+with open(INPUTS_DIR) as file:
     parameters = json.load(file)
 
 aws_region = parameters['context']['region']
