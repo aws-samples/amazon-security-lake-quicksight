@@ -17,15 +17,22 @@ We welcome contributions to this repo in the form of fixes to existing examples 
 
 ## Usage Guide <a name="Usage"></a>
 
-Edit cdk-lakeformation-permissions/source/cdk.json using the values for your specific Amazon Security Lake and Amazon Quicksight Instance
+Edit cdk-lakeformation-permissions/source/cdk.json using the values for your specific Amazon Security Lake and Amazon Quicksight Instance:
 
-	• rollup_region - 
-	• region - 
-	• slregion - 
-	• LakeFormationAdminRoleArn - 
-	• SecurityLakeAccountID - 
-	• AWSAccountID - 
-	• QuicksightUserARN - 
+• rollup_region - 
+
+• region - 
+
+• slregion - 
+
+• LakeFormationAdminRoleArn - 
+
+• SecurityLakeAccountID - 
+
+• AWSAccountID - 
+
+• QuicksightUserARN - 
+
 
 
 	{
@@ -47,15 +54,15 @@ Run
 
 ## Examples <a name="Examples"></a>
 
-Edit cdk-lakeformation-permissions/source/cdk.json using the values for your specific Amazon Security Lake and Amazon Quicksight Instance
+Edit cdk-lakeformation-permissions/source/cdk.json using the values for your specific Amazon Security Lake and Amazon Quicksight Instance:
 
-	• rollup_region - 
-	• region - 
-	• slregion - 
-	• LakeFormationAdminRoleArn - 
-	• SecurityLakeAccountID - 
-	• AWSAccountID - 
-	• QuicksightUserARN - 
+• rollup_region - 
+• region - 
+• slregion - 
+• LakeFormationAdminRoleArn - 
+• SecurityLakeAccountID - 
+• AWSAccountID - 
+• QuicksightUserARN - 
 
 	
 	{
