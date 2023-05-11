@@ -27,6 +27,7 @@ Edit cdk-lakeformation-permissions/source/cdk.json using the values for your spe
 6. AWSAccountID - 
 7. QuicksightUserARN - 
 
+
 	{
 	  "app": "python3 app.py",
 	  "context": {
@@ -56,6 +57,7 @@ Edit cdk-lakeformation-permissions/source/cdk.json using the values for your spe
 6. AWSAccountID - 
 7. QuicksightUserARN - 
 
+	
 	{
 	  "app": "python3 app.py",
 	  "context": {
