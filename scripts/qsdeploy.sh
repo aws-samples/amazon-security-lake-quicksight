@@ -3,17 +3,15 @@
 cd "$parent_path/source"
 
 echo "Running cdk deploy --all command"
-echo "--------------------------------"
+echo "--------------------------------------------"
 echo " "
 cdk deploy --all -v
-echo "--------------------------------"
-echo " "
 echo "Finished cdk deploy"
-echo "--------------------------------"
-echo " "
+echo "--------------------------------------------"
+
 echo "Running QuickSight Generate Dashboards"
-echo "--------------------------------"
+echo "--------------------------------------------"
 echo " "
 python3 qs_lake_generate.py
-echo "--------------------------------"
 echo "Finished QuickSight Generate Dashboards"
+echo "--------------------------------------------"
