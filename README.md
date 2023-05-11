@@ -28,18 +28,18 @@ Edit cdk-lakeformation-permissions/source/cdk.json using the values for your spe
 7. QuicksightUserARN - 
 
 
-	{
-	  "app": "python3 app.py",
-	  "context": {
-	    "rollup_region": "<region>",
-	    "region": "<region>",
-	    "slregion": "<region>",
-	    "LakeFormationAdminRoleARN": "arn:aws:iam::123456789012:role/<Rolename>",
-	    "SecurityLakeAccountID": 123456789012,
-	    "AWSAccountID":555555555555,
-	    "QuickSightUserARN": "arn:aws:quicksight:<Region>:123456789012:user/default/<PrincipalId>"   
-	  }
-	}
+		{
+		  "app": "python3 app.py",
+		  "context": {
+		    "rollup_region": "<region>",
+		    "region": "<region>",
+		    "slregion": "<region>",
+		    "LakeFormationAdminRoleARN": "arn:aws:iam::123456789012:role/<Rolename>",
+		    "SecurityLakeAccountID": 123456789012,
+		    "AWSAccountID":555555555555,
+		    "QuickSightUserARN": "arn:aws:quicksight:<Region>:123456789012:user/default/<PrincipalId>"   
+		  }
+		}
   
 Run 
 
@@ -56,21 +56,20 @@ Edit cdk-lakeformation-permissions/source/cdk.json using the values for your spe
 5. SecurityLakeAccountID - 
 6. AWSAccountID - 
 7. QuicksightUserARN - 
-
-
 	
-	{
-	  "app": "python3 app.py",
-	  "context": {
-	    "rollup_region": "<region>",
-	    "region": "<region>",
-	    "slregion": "<region>",
-	    "LakeFormationAdminRoleARN": "arn:aws:iam::123456789012:role/<Rolename>",
-	    "SecurityLakeAccountID": 123456789012,
-	    "AWSAccountID":555555555555,
-	    "QuickSightUserARN": "arn:aws:quicksight:<Region>:123456789012:user/default/<PrincipalId>"   
-	  }
-	}
+	
+		{
+		  "app": "python3 app.py",
+		  "context": {
+		    "rollup_region": "<region>",
+		    "region": "<region>",
+		    "slregion": "<region>",
+		    "LakeFormationAdminRoleARN": "arn:aws:iam::123456789012:role/<Rolename>",
+		    "SecurityLakeAccountID": 123456789012,
+		    "AWSAccountID":555555555555,
+		    "QuickSightUserARN": "arn:aws:quicksight:<Region>:123456789012:user/default/<PrincipalId>"   
+		  }
+		}
   
 Run 
 
