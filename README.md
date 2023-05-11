@@ -116,6 +116,11 @@ Edit cdk-lakeformation-permissions/source/cdk.json using the values for your spe
 Run 
 
 	qsdeploy.sh
+	
+	
+![Dashboard1](/images/analyst.png)
+![Dashboard2](/imagescustodian.png)
+![Dashboard3](/images/executive.png)
 
 ### Official Resources
 - [Amazon Security Lake Overview](https://aws.amazon.com/security-lake/)
