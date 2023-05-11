@@ -118,11 +118,11 @@ Run
 	qsdeploy.sh
 	
 	
-(/images/analyst.png)
+![Solution Overview](/images/analyst.png)
 
-(/imagescustodian.png)
+![Solution Overview](/imagescustodian.png)
 
-(/images/executive.png)
+![Solution Overview](/images/executive.png)
 
 ### Official Resources
 - [Amazon Security Lake Overview](https://aws.amazon.com/security-lake/)
