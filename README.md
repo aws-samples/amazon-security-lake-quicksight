@@ -1,6 +1,3 @@
-Amazon Security Lake Data Validation 
-========================
-
 ## Table of Contents
 1. [About this Repo](#About)
 2. [Usage Guide](#Usage)
