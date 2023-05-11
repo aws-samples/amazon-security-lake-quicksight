@@ -1,12 +1,12 @@
 {
   "app": "python3 app.py",
   "context": {
-    "rollup_region": "us_east_1",
-    "region": "us-east-1",
-    "slregion": "us-east-1",
-    "LakeFormationAdminRoleARN": "arn:aws:iam::ACCOUNTID:role/ROLENAME",
-    "SecurityLakeAccountID": SECURITYLAKEACCOUNTID,
-    "AWSAccountID":TARGETAWSACCOUNTID,
-    "QuickSightUserARN": "QUICKSIGHTUSERARN"   
+    "rollup_region": "<region>",
+    "region": "<region>",
+    "slregion": "<region>",
+    "LakeFormationAdminRoleARN": "arn:aws:iam::123456789012:role/<Rolename>",
+    "SecurityLakeAccountID": 123456789012,
+    "AWSAccountID":555555555555,
+    "QuickSightUserARN": "arn:aws:quicksight:<Region>:123456789012:user/default/<PrincipalId>"   
   }
 }
