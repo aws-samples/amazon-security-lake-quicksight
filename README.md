@@ -17,10 +17,16 @@ We welcome contributions to this repo in the form of fixes to existing examples 
 
 ## Usage Guide <a name="Usage"></a>
 
-Edit 
+Edit cdk-lakeformation-permissions/source/cdk.json using the values for your specific Amazon Security Lake and Amazon Quicksight Instance
 
-	cdk-lakeformation-permissions/source/cdk.json
-  
+1. rollup_region - 
+2. region - 
+3. slregion - 
+4. LakeFormationAdminRoleArn - 
+5. SecurityLakeAccountID - 
+6. AWSAccountID - 
+7. QuicksightUserARN - 
+
 	{
 	  "app": "python3 app.py",
 	  "context": {
@@ -40,10 +46,16 @@ Run
 
 ## Examples <a name="Examples"></a>
 
-Edit 
+Edit cdk-lakeformation-permissions/source/cdk.json using the values for your specific Amazon Security Lake and Amazon Quicksight Instance
 
-	cdk-lakeformation-permissions/source/cdk.json
-  
+1. rollup_region - 
+2. region - 
+3. slregion - 
+4. LakeFormationAdminRoleArn - 
+5. SecurityLakeAccountID - 
+6. AWSAccountID - 
+7. QuicksightUserARN - 
+
 	{
 	  "app": "python3 app.py",
 	  "context": {
