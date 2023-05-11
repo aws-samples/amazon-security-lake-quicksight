@@ -1,14 +1,19 @@
-echo "--------------------------------"
+#!/bin/bash
+#parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+cd "$parent_path/source"
+
 echo "Running cdk deploy --all command"
 echo "--------------------------------"
+echo " "
 cdk deploy --all -v
 echo "--------------------------------"
+echo " "
 echo "Finished cdk deploy"
 echo "--------------------------------"
-echo "--------------------------------"
+echo " "
 echo "Running QuickSight Generate Dashboards"
 echo "--------------------------------"
-python3 ../../qs_lake_generate.py
+echo " "
+python3 qs_lake_generate.py
 echo "--------------------------------"
 echo "Finished QuickSight Generate Dashboards"
-echo "--------------------------------"
