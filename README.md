@@ -19,7 +19,7 @@ We welcome contributions to this repo in the form of fixes to existing examples 
 
 ## Solution Overview <a name="Solution Overview"></a>
 
-![Solution Overview](security_lake_quicksight_deployment_architecture.jpg)
+![Solution Overview](/images/security_lake_quicksight_deployment_architecture.jpg)
 
 ## Usage Guide <a name="Usage"></a>
 
@@ -116,6 +116,13 @@ Edit cdk-lakeformation-permissions/source/cdk.json using the values for your spe
 Run 
 
 	qsdeploy.sh
+	
+	
+![Solution Overview](/images/analyst.png)
+
+![Solution Overview](/imagescustodian.png)
+
+![Solution Overview](/images/executive.png)
 
 ### Official Resources
 - [Amazon Security Lake Overview](https://aws.amazon.com/security-lake/)
