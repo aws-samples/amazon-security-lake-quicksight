@@ -12,6 +12,6 @@ echo "--------------------------------------------"
 echo "Running QuickSight Generate Dashboards"
 echo "--------------------------------------------"
 echo " "
-python3 qs_lake_generate.py
+python3 createobjects.py
 echo "Finished QuickSight Generate Dashboards"
 echo "--------------------------------------------"
