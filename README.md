@@ -10,6 +10,10 @@ This repository a combinatination of CDK tools and scripts which can be used to 
 
 We welcome contributions to this repo in the form of fixes to existing examples or addition of new examples. For more information on contributing, please see the [CONTRIBUTING](https://github.com/aws-samples/amazon-security-lake/blob/main/CONTRIBUTING.md) guide.
 
+## Prerequisites <a name="Prerequisites"></a>
+* Enable Amazon Security Lake. For multiple AWS accounts, it is recommended to manage Security Lake for AWS Organizations To help automate and streamline the management of multiple accounts, we strongly recommend that you integrate Security Lake with AWS Organizations.
+
+* As part of this solution, you will need to enable Amazon QuickSight and configure users and groups. Here is the [link] (https://docs.aws.amazon.com/quicksight/latest/user/creating-quicksight-groups.html) for creating and managing groups in Amazon QuickSight.  
 
 ## Solution Overview <a name="Solution Overview"></a>
 
