@@ -16,7 +16,7 @@ We welcome contributions to this repo in the form of fixes to existing examples 
 
 ## Solution Overview <a name="Solution Overview"></a>
 
-![Alt text](https://file%2B.vscode-resource.vscode-cdn.net/Users/rwajay/Desktop/gitlab%20repo/amazon-security-lake-quicksight/security_lake_quicksight_deployment_architecture.jpg?version%3D1683819617726)
+![Solution Overview](/amazon-security-lake-quicksight/security_lake_quicksight_deployment_architecture.jpg)
 
 ## Usage Guide <a name="Usage"></a>
 
