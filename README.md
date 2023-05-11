@@ -118,9 +118,11 @@ Run
 	qsdeploy.sh
 	
 	
-![Dashboard1](/images/analyst.png)
-![Dashboard2](/imagescustodian.png)
-![Dashboard3](/images/executive.png)
+(/images/analyst.png)
+
+(/imagescustodian.png)
+
+(/images/executive.png)
 
 ### Official Resources
 - [Amazon Security Lake Overview](https://aws.amazon.com/security-lake/)
