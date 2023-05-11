@@ -16,7 +16,7 @@ We welcome contributions to this repo in the form of fixes to existing examples 
 
 ## Solution Overview <a name="Solution Overview"></a>
 
-![Solution Overview](/amazon-security-lake-quicksight/security_lake_quicksight_deployment_architecture.jpg)
+![Solution Overview](https://github.com/aws-samples/amazon-security-lake-quicksight/blob/main/security_lake_quicksight_deployment_architecture.jpg)
 
 ## Usage Guide <a name="Usage"></a>
 
