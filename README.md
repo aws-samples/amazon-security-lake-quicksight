@@ -34,25 +34,6 @@ cdk-lakeformation-permissions/source/cdk.json
   
 Run qsdeploy.sh
 
-	#!/bin/bash
-	#parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
-	cd "$parent_path/source"
-
-	echo "Running cdk deploy --all command"
-	echo "--------------------------------------------"
-	echo " "
-	cdk deploy --all -v
-	echo "Finished cdk deploy"
-	echo "--------------------------------------------"
-
-	echo "Running QuickSight Generate Dashboards"
-	echo "--------------------------------------------"
-	echo " "
-	python3 createobjects.py
-	echo "Finished QuickSight Generate Dashboards"
-	echo "--------------------------------------------"
-
-
 ## Examples <a name="Examples"></a>
 
 cdk-lakeformation-permissions/source/cdk.json
@@ -71,25 +52,6 @@ cdk-lakeformation-permissions/source/cdk.json
 	}
   
 Run qsdeploy.sh
-
-	#!/bin/bash
-	#parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
-	cd "$parent_path/source"
-
-	echo "Running cdk deploy --all command"
-	echo "--------------------------------------------"
-	echo " "
-	cdk deploy --all -v
-	echo "Finished cdk deploy"
-	echo "--------------------------------------------"
-
-	echo "Running QuickSight Generate Dashboards"
-	echo "--------------------------------------------"
-	echo " "
-	python3 createobjects.py
-	echo "Finished QuickSight Generate Dashboards"
-	echo "--------------------------------------------"
-
 
 ### Official Resources
 - [Amazon Security Lake Overview](https://aws.amazon.com/security-lake/)
