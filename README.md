@@ -18,7 +18,6 @@ We welcome contributions to this repo in the form of fixes to existing examples 
 
 ![Solution Overview](/amazon-security-lake-quicksight/security_lake_quicksight_deployment_architecture.jpg)
 
-
 ## Usage Guide <a name="Usage"></a>
 
 cdk-lakeformation-permissions/source/cdk.json
