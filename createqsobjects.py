@@ -7,7 +7,7 @@ import shutil
 import json
 
 
-with open('cdk-lakeformation-permissions/source/cdk.json') as file:
+with open('../source/cdk.json') as file:
     parameters = json.load(file)
 
 aws_region = parameters['context']['region']
@@ -24,7 +24,7 @@ def main(aws_region, aws_account_id, aws_principal_id):
     """
 
     # Store the absolute path of this script in path variable
-    BASE_DIR = str((Path(os.path.abspath(__file__))).parent).replace('\\', '/')
+    BASE_DIR = str((Path(os.path.abspath(__file__))).parent.parent).replace('\\', '/')
 
     # Set relative path values for script runtime
     TEMPLATES_DIR = BASE_DIR + '/asset-templates/'
