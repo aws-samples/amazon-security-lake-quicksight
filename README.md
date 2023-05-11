@@ -17,7 +17,9 @@ We welcome contributions to this repo in the form of fixes to existing examples 
 
 ## Usage Guide <a name="Usage"></a>
 
-cdk-lakeformation-permissions/source/cdk.json
+Edit 
+
+	cdk-lakeformation-permissions/source/cdk.json
   
 	{
 	  "app": "python3 app.py",
@@ -32,11 +34,15 @@ cdk-lakeformation-permissions/source/cdk.json
 	  }
 	}
   
-Run qsdeploy.sh
+Run 
+
+	qsdeploy.sh
 
 ## Examples <a name="Examples"></a>
 
-cdk-lakeformation-permissions/source/cdk.json
+Edit 
+
+	cdk-lakeformation-permissions/source/cdk.json
   
 	{
 	  "app": "python3 app.py",
@@ -51,7 +57,9 @@ cdk-lakeformation-permissions/source/cdk.json
 	  }
 	}
   
-Run qsdeploy.sh
+Run 
+
+	qsdeploy.sh
 
 ### Official Resources
 - [Amazon Security Lake Overview](https://aws.amazon.com/security-lake/)
