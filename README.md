@@ -14,6 +14,10 @@ This repository a combinatination of CDK tools and scripts which can be used to 
 We welcome contributions to this repo in the form of fixes to existing examples or addition of new examples. For more information on contributing, please see the [CONTRIBUTING](https://github.com/aws-samples/amazon-security-lake/blob/main/CONTRIBUTING.md) guide.
 
 
+## Solution Overview <a name="Solution Overview"></a>
+
+![Alt text](https://file%2B.vscode-resource.vscode-cdn.net/Users/rwajay/Desktop/gitlab%20repo/amazon-security-lake-quicksight/security_lake_quicksight_deployment_architecture.jpg?version%3D1683819617726)
+
 ## Usage Guide <a name="Usage"></a>
 
 cdk-lakeformation-permissions/source/cdk.json
