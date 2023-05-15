@@ -14,6 +14,13 @@ class CdkPermissionStack(Stack):
         super().__init__(scope, id, **kwargs)
 
         tables = ['cloud_trail', 'route53', 'sh_findings', 'vpc_flow']
+        permission_list = {
+                     "qs_arn":quicksight_user_arn.value_as_string,
+                     "operator":f"arn:aws:quicksight:{Stack.of(self).region}:{Stack.of(self).account}:group/default/security-lake-operator-group",
+                     "custodian":f"arn:aws:quicksight:{Stack.of(self).region}:{Stack.of(self).account}:group/default/security-lake-custodian-group",
+                     "executive":f"arn:aws:quicksight:{Stack.of(self).region}:{Stack.of(self).account}:group/default/security-lake-executive-group"
+
+                 }
 
         rollup_region = self.node.try_get_context('rollup_region')
         data_lake_admin_id = self.node.try_get_context(
@@ -37,32 +44,39 @@ class CdkPermissionStack(Stack):
                                                            )
                                                        ))
 
-        db_permissions = lf.CfnPrincipalPermissions(self, "QSTablePermissionsDatabase",
-                                                    permissions=["DESCRIBE"],
-                                                    permissions_with_grant_option=[],
-                                                    principal=lf.CfnPrincipalPermissions.DataLakePrincipalProperty(
-                                                        data_lake_principal_identifier=quicksight_user_arn.value_as_string,
-                                                    ),
-                                                    resource=lf.CfnPrincipalPermissions.ResourceProperty(
-                                                        database=lf.CfnPrincipalPermissions.DatabaseResourceProperty(
-                                                            catalog_id=self.account,
-                                                            name=f"amazon_security_lake_glue_db_{rollup_region}"
-                                                        )
-                                                    ))
-        db_permissions.add_dependency(security_lake_resource_link)
-        for table in tables:
-            # Define the LakeFormation principal permissions
-            lf.CfnPrincipalPermissions(self, f"{table.capitalize()}QSTablePermissions",
-                                       permissions=["SELECT"],
-                                       permissions_with_grant_option=[],
-                                       principal=lf.CfnPrincipalPermissions.DataLakePrincipalProperty(
-                                           data_lake_principal_identifier=quicksight_user_arn.value_as_string,
-                                       ),
-                                       resource=lf.CfnPrincipalPermissions.ResourceProperty(
-                                           table=lf.CfnPrincipalPermissions.TableResourceProperty(
-                                               catalog_id=security_lake_account_id.value_as_string,
-                                               database_name=f"amazon_security_lake_glue_db_{rollup_region}",
-                                               name=f"amazon_security_lake_table_{rollup_region}_{table}"
-                                           )
+        for key, value in permission_list.items(): 
+            print ('key and value', key, value)
+            describe_permissions = lf.CfnPrincipalPermissions(self, "QSTablePermissionsDatabase"+key,
+                                                permissions=["DESCRIBE"],
+                                                permissions_with_grant_option=[],
+                                                principal=lf.CfnPrincipalPermissions.DataLakePrincipalProperty(
+                                                    data_lake_principal_identifier=value,
+                                                ),
+                                                resource=lf.CfnPrincipalPermissions.ResourceProperty(
+                                                    database=lf.CfnPrincipalPermissions.DatabaseResourceProperty(
+                                                        catalog_id=self.account,
+                                                        name=f"amazon_security_lake_glue_db_{rollup_region}"
+                                                    )
+                                                ))
+            describe_permissions.add_dependency(security_lake_resource_link)
 
-                                       ))
+
+            for table in tables:
+                print ('key and table', key, table)
+                # Define the LakeFormation principal permissions
+                table_permissions = lf.CfnPrincipalPermissions(self, f"{table.capitalize()}QSTablePermissions"+key,
+                                        permissions=["SELECT"],
+                                        permissions_with_grant_option=[],
+                                        principal=lf.CfnPrincipalPermissions.DataLakePrincipalProperty(
+                                            data_lake_principal_identifier=value,
+                                        ),
+                                        resource=lf.CfnPrincipalPermissions.ResourceProperty(
+                                            table=lf.CfnPrincipalPermissions.TableResourceProperty(
+                                                catalog_id=security_lake_account_id.value_as_string,
+                                                database_name=f"amazon_security_lake_glue_db_{rollup_region}",
+                                                name=f"amazon_security_lake_table_{rollup_region}_{table}"
+                                            )
+                                        ))
+                table_permissions.add_dependency(describe_permissions)
+
+

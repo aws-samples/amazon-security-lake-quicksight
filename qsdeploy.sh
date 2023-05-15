@@ -4,6 +4,7 @@ cd "$parent_path/cdk-lakeformation-permissions/source"
 echo "Running cdk synth and deploy --all command"
 echo "--------------------------------------------"
 echo " "
+cdk bootstrap
 cdk synth
 cdk deploy --all -v
 echo "Finished cdk deploy"
