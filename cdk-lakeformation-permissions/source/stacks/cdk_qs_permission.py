@@ -45,7 +45,6 @@ class CdkPermissionStack(Stack):
                                                        ))
 
         for key, value in permission_list.items(): 
-            print ('key and value', key, value)
             describe_permissions = lf.CfnPrincipalPermissions(self, "QSTablePermissionsDatabase"+key,
                                                 permissions=["DESCRIBE"],
                                                 permissions_with_grant_option=[],
@@ -62,7 +61,6 @@ class CdkPermissionStack(Stack):
 
 
             for table in tables:
-                print ('key and table', key, table)
                 # Define the LakeFormation principal permissions
                 table_permissions = lf.CfnPrincipalPermissions(self, f"{table.capitalize()}QSTablePermissions"+key,
                                         permissions=["SELECT"],
