@@ -1,9 +1,9 @@
 {
     "namespaces": {},
     "dashboards": {
-        "SecurityExecutiveDashboard": {
-            "DashboardId": "SecurityExecutiveDashboard",
-            "Name": "Security Lake Executive Dashboard",
+        "SecurityOperatorDashboard": {
+            "DashboardId": "SecurityOperatorDashboard",
+            "Name": "Security Lake Operator Dashboard",
             "ThemeArn": "arn:aws:quicksight::aws:theme/MIDNIGHT",
             "Definition": {
                 "DataSetIdentifierDeclarations": [
@@ -30,38 +30,39 @@
                 ],
                 "Sheets": [
                     {
-                        "SheetId": "SecurityExecutiveDashboard_d12f47cb-29ab-46a5-80a0-08d8669e3222",
-                        "Name": "Data Lake Executive",
+                        "SheetId": "SecurityOperatorDashboard_4bea718f-d96f-4ad6-8da2-6f6438aa0056",
+                        "Name": "Threat Hunting",
                         "FilterControls": [
                             {
                                 "DateTimePicker": {
-                                    "FilterControlId": "3e8648db-e204-4a23-8409-ee370f6c5095",
+                                    "FilterControlId": "d77ecef9-e046-43df-8ac4-043a29b9b36f",
                                     "Title": "Date between",
-                                    "SourceFilterId": "df35df21-45ed-49ad-b1bc-2257b1c89cc7",
+                                    "SourceFilterId": "d4248a49-e22c-44e0-bb7f-68a6580d1034",
                                     "Type": "DATE_RANGE"
+                                }
+                            },
+                            {
+                                "Dropdown": {
+                                    "FilterControlId": "eb9637e3-88ed-4062-aaec-77ae27e77642",
+                                    "Title": "api_operation equals",
+                                    "SourceFilterId": "e492cd99-6481-468f-b1f8-64fa3c6df625",
+                                    "DisplayOptions": {
+                                        "SelectAllOptions": {
+                                            "Visibility": "VISIBLE"
+                                        },
+                                        "TitleOptions": {
+                                            "Visibility": "VISIBLE",
+                                            "FontConfiguration": {}
+                                        }
+                                    },
+                                    "Type": "MULTI_SELECT"
                                 }
                             }
                         ],
                         "Visuals": [
                             {
-                                "InsightVisual": {
-                                    "VisualId": "SecurityExecutiveDashboard_38389652-7a68-4a1b-af0a-14a1758d5a0f",
-                                    "Title": {
-                                        "Visibility": "VISIBLE"
-                                    },
-                                    "Subtitle": {
-                                        "Visibility": "VISIBLE"
-                                    },
-                                    "InsightConfiguration": {
-                                        "Computations": []
-                                    },
-                                    "Actions": [],
-                                    "DataSetIdentifier": "sl-ag-production"
-                                }
-                            },
-                            {
-                                "LineChartVisual": {
-                                    "VisualId": "SecurityExecutiveDashboard_257b015e-9d63-438d-9a85-812ec76da029",
+                                "SankeyDiagramVisual": {
+                                    "VisualId": "SecurityOperatorDashboard_47a82dff-8e7b-42e0-87ff-c873c3897131",
                                     "Title": {
                                         "Visibility": "VISIBLE"
                                     },
@@ -70,106 +71,53 @@
                                     },
                                     "ChartConfiguration": {
                                         "FieldWells": {
-                                            "LineChartAggregatedFieldWells": {
-                                                "Category": [
+                                            "SankeyDiagramAggregatedFieldWells": {
+                                                "Source": [
                                                     {
-                                                        "DateDimensionField": {
-                                                            "FieldId": "d4c839f4-b487-41ec-bbe7-0b1873d3c22c.Date.1.1681828916158",
+                                                        "CategoricalDimensionField": {
+                                                            "FieldId": "71f17e04-70dd-4664-8628-1ee781887821.account_uid.1.1681912104567",
                                                             "Column": {
-                                                                "DataSetIdentifier": "sl-ag-production",
-                                                                "ColumnName": "Date"
-                                                            },
-                                                            "HierarchyId": "259d332c-7ff2-4bc4-bbee-cdfe250f4255"
+                                                                "DataSetIdentifier": "vpc-flow-data",
+                                                                "ColumnName": "account_uid"
+                                                            }
                                                         }
                                                     }
                                                 ],
-                                                "Values": [
+                                                "Destination": [
                                                     {
-                                                        "CategoricalMeasureField": {
-                                                            "FieldId": "d4c839f4-b487-41ec-bbe7-0b1873d3c22c.accountid.1.1681829056434",
+                                                        "CategoricalDimensionField": {
+                                                            "FieldId": "71f17e04-70dd-4664-8628-1ee781887821.src_endpoint_ip.1.1681912165206",
                                                             "Column": {
-                                                                "DataSetIdentifier": "sl-ag-production",
-                                                                "ColumnName": "accountid"
-                                                            },
-                                                            "AggregationFunction": "DISTINCT_COUNT"
+                                                                "DataSetIdentifier": "vpc-flow-data",
+                                                                "ColumnName": "src_endpoint_ip"
+                                                            }
                                                         }
                                                     }
                                                 ],
-                                                "Colors": []
+                                                "Weight": []
                                             }
                                         },
                                         "SortConfiguration": {
-                                            "CategorySort": [
-                                                {
-                                                    "FieldSort": {
-                                                        "FieldId": "d4c839f4-b487-41ec-bbe7-0b1873d3c22c.Date.1.1681828916158",
-                                                        "Direction": "DESC"
-                                                    }
-                                                }
-                                            ],
-                                            "CategoryItemsLimitConfiguration": {
-                                                "OtherCategories": "INCLUDE"
+                                            "SourceItemsLimit": {
+                                                "ItemsLimit": 10,
+                                                "OtherCategories": "EXCLUDE"
                                             },
-                                            "ColorItemsLimitConfiguration": {
-                                                "OtherCategories": "INCLUDE"
-                                            },
-                                            "SmallMultiplesLimitConfiguration": {
-                                                "OtherCategories": "INCLUDE"
-                                            }
-                                        },
-                                        "Type": "STACKED_AREA",
-                                        "PrimaryYAxisDisplayOptions": {
-                                            "AxisOptions": {
-                                                "DataOptions": {
-                                                    "NumericAxisOptions": {
-                                                        "Scale": {
-                                                            "Logarithmic": {}
-                                                        }
-                                                    }
-                                                }
+                                            "DestinationItemsLimit": {
+                                                "ItemsLimit": 10,
+                                                "OtherCategories": "EXCLUDE"
                                             }
                                         },
                                         "DataLabels": {
-                                            "Visibility": "HIDDEN",
+                                            "Visibility": "VISIBLE",
                                             "Overlap": "DISABLE_OVERLAP"
-                                        },
-                                        "Tooltip": {
-                                            "TooltipVisibility": "VISIBLE",
-                                            "SelectedTooltipType": "BASIC",
-                                            "FieldBasedTooltip": {
-                                                "AggregationVisibility": "HIDDEN",
-                                                "TooltipTitleType": "PRIMARY_VALUE",
-                                                "TooltipFields": [
-                                                    {
-                                                        "FieldTooltipItem": {
-                                                            "FieldId": "d4c839f4-b487-41ec-bbe7-0b1873d3c22c.Date.1.1681828916158",
-                                                            "Visibility": "VISIBLE"
-                                                        }
-                                                    },
-                                                    {
-                                                        "FieldTooltipItem": {
-                                                            "FieldId": "d4c839f4-b487-41ec-bbe7-0b1873d3c22c.accountid.1.1681829056434",
-                                                            "Visibility": "VISIBLE"
-                                                        }
-                                                    }
-                                                ]
-                                            }
                                         }
                                     },
-                                    "Actions": [],
-                                    "ColumnHierarchies": [
-                                        {
-                                            "DateTimeHierarchy": {
-                                                "HierarchyId": "259d332c-7ff2-4bc4-bbee-cdfe250f4255",
-                                                "DrillDownFilters": []
-                                            }
-                                        }
-                                    ]
+                                    "Actions": []
                                 }
                             },
                             {
                                 "ComboChartVisual": {
-                                    "VisualId": "SecurityExecutiveDashboard_8f71d514-4f78-4ca9-ae03-43fefcf967c0",
+                                    "VisualId": "SecurityOperatorDashboard_ef68e453-c098-4cb8-be29-455474658600",
                                     "Title": {
                                         "Visibility": "VISIBLE"
                                     },
@@ -182,12 +130,12 @@
                                                 "Category": [
                                                     {
                                                         "DateDimensionField": {
-                                                            "FieldId": "d4c839f4-b487-41ec-bbe7-0b1873d3c22c.Date.1.1681828916158",
+                                                            "FieldId": "9a10b0b4-f6d8-4285-9247-b8a3a6ba3490.Date.1.1681911769139",
                                                             "Column": {
-                                                                "DataSetIdentifier": "sl-ag-production",
+                                                                "DataSetIdentifier": "Cloudtrail New",
                                                                 "ColumnName": "Date"
                                                             },
-                                                            "HierarchyId": "233c50bd-83d9-451c-ba38-42dfc4e1cea6"
+                                                            "HierarchyId": "6d6d9e43-d986-4b50-b052-62d925e33cd1"
                                                         }
                                                     }
                                                 ],
@@ -195,10 +143,10 @@
                                                 "Colors": [
                                                     {
                                                         "CategoricalDimensionField": {
-                                                            "FieldId": "d4c839f4-b487-41ec-bbe7-0b1873d3c22c.region.1.1681829046603",
+                                                            "FieldId": "9a10b0b4-f6d8-4285-9247-b8a3a6ba3490.account_uid.1.1681911778433",
                                                             "Column": {
-                                                                "DataSetIdentifier": "sl-ag-production",
-                                                                "ColumnName": "region"
+                                                                "DataSetIdentifier": "Cloudtrail New",
+                                                                "ColumnName": "account_uid"
                                                             }
                                                         }
                                                     }
@@ -210,31 +158,19 @@
                                             "CategorySort": [
                                                 {
                                                     "FieldSort": {
-                                                        "FieldId": "d4c839f4-b487-41ec-bbe7-0b1873d3c22c.Date.1.1681828916158",
+                                                        "FieldId": "9a10b0b4-f6d8-4285-9247-b8a3a6ba3490.Date.1.1681911769139",
                                                         "Direction": "ASC"
                                                     }
                                                 }
                                             ],
                                             "CategoryItemsLimit": {
-                                                "OtherCategories": "EXCLUDE"
+                                                "OtherCategories": "INCLUDE"
                                             },
                                             "ColorItemsLimit": {
-                                                "OtherCategories": "EXCLUDE"
+                                                "OtherCategories": "INCLUDE"
                                             }
                                         },
                                         "BarsArrangement": "STACKED",
-                                        "CategoryAxis": {
-                                            "AxisOffset": "72px"
-                                        },
-                                        "PrimaryYAxisDisplayOptions": {
-                                            "DataOptions": {
-                                                "NumericAxisOptions": {
-                                                    "Scale": {
-                                                        "Logarithmic": {}
-                                                    }
-                                                }
-                                            }
-                                        },
                                         "BarDataLabels": {
                                             "Visibility": "HIDDEN",
                                             "Overlap": "DISABLE_OVERLAP"
@@ -247,7 +183,7 @@
                                     "ColumnHierarchies": [
                                         {
                                             "DateTimeHierarchy": {
-                                                "HierarchyId": "233c50bd-83d9-451c-ba38-42dfc4e1cea6",
+                                                "HierarchyId": "6d6d9e43-d986-4b50-b052-62d925e33cd1",
                                                 "DrillDownFilters": []
                                             }
                                         }
@@ -255,8 +191,116 @@
                                 }
                             },
                             {
+                                "SankeyDiagramVisual": {
+                                    "VisualId": "SecurityOperatorDashboard_cdef8db9-c811-44b3-8c00-285586923ca3",
+                                    "Title": {
+                                        "Visibility": "VISIBLE"
+                                    },
+                                    "Subtitle": {
+                                        "Visibility": "VISIBLE"
+                                    },
+                                    "ChartConfiguration": {
+                                        "FieldWells": {
+                                            "SankeyDiagramAggregatedFieldWells": {
+                                                "Source": [
+                                                    {
+                                                        "CategoricalDimensionField": {
+                                                            "FieldId": "71f17e04-70dd-4664-8628-1ee781887821.src_endpoint_ip.1.1681912123791",
+                                                            "Column": {
+                                                                "DataSetIdentifier": "vpc-flow-data",
+                                                                "ColumnName": "src_endpoint_ip"
+                                                            }
+                                                        }
+                                                    }
+                                                ],
+                                                "Destination": [
+                                                    {
+                                                        "CategoricalDimensionField": {
+                                                            "FieldId": "71f17e04-70dd-4664-8628-1ee781887821.dst_endpoint_ip.1.1681912197130",
+                                                            "Column": {
+                                                                "DataSetIdentifier": "vpc-flow-data",
+                                                                "ColumnName": "dst_endpoint_ip"
+                                                            }
+                                                        }
+                                                    }
+                                                ],
+                                                "Weight": []
+                                            }
+                                        },
+                                        "SortConfiguration": {
+                                            "SourceItemsLimit": {
+                                                "ItemsLimit": 10,
+                                                "OtherCategories": "EXCLUDE"
+                                            },
+                                            "DestinationItemsLimit": {
+                                                "ItemsLimit": 10,
+                                                "OtherCategories": "EXCLUDE"
+                                            }
+                                        },
+                                        "DataLabels": {
+                                            "Visibility": "VISIBLE",
+                                            "Overlap": "DISABLE_OVERLAP"
+                                        }
+                                    },
+                                    "Actions": []
+                                }
+                            },
+                            {
+                                "SankeyDiagramVisual": {
+                                    "VisualId": "SecurityOperatorDashboard_5025adcd-a21f-4571-a9b4-1d24f2cd08b6",
+                                    "Title": {
+                                        "Visibility": "VISIBLE"
+                                    },
+                                    "Subtitle": {
+                                        "Visibility": "VISIBLE"
+                                    },
+                                    "ChartConfiguration": {
+                                        "FieldWells": {
+                                            "SankeyDiagramAggregatedFieldWells": {
+                                                "Source": [
+                                                    {
+                                                        "CategoricalDimensionField": {
+                                                            "FieldId": "0ddebb26-5cb8-4a96-ad8d-1f833d297908.srcIp.0.1681911139646",
+                                                            "Column": {
+                                                                "DataSetIdentifier": "R53 New",
+                                                                "ColumnName": "srcIp"
+                                                            }
+                                                        }
+                                                    }
+                                                ],
+                                                "Destination": [
+                                                    {
+                                                        "CategoricalDimensionField": {
+                                                            "FieldId": "0ddebb26-5cb8-4a96-ad8d-1f833d297908.queryHostname.1.1681911151462",
+                                                            "Column": {
+                                                                "DataSetIdentifier": "R53 New",
+                                                                "ColumnName": "queryHostname"
+                                                            }
+                                                        }
+                                                    }
+                                                ],
+                                                "Weight": []
+                                            }
+                                        },
+                                        "SortConfiguration": {
+                                            "SourceItemsLimit": {
+                                                "ItemsLimit": 10
+                                            },
+                                            "DestinationItemsLimit": {
+                                                "ItemsLimit": 10
+                                            }
+                                        },
+                                        "DataLabels": {
+                                            "Visibility": "VISIBLE",
+                                            "Overlap": "DISABLE_OVERLAP"
+                                        }
+                                    },
+                                    "Actions": []
+                                }
+                            },
+                            {
                                 "ComboChartVisual": {
-                                    "VisualId": "SecurityExecutiveDashboard_8ac9abb1-89a9-4de2-8309-b826839c34bb",
+                                    "VisualId": "SecurityOperatorDashboard_dc683e38-efd8-4936-a404-895d234449e8",
                                     "Title": {
                                         "Visibility": "VISIBLE"
                                     },
@@ -269,12 +313,12 @@
                                                 "Category": [
                                                     {
                                                         "DateDimensionField": {
-                                                            "FieldId": "d4c839f4-b487-41ec-bbe7-0b1873d3c22c.Date.1.1681828916158",
+                                                            "FieldId": "9a10b0b4-f6d8-4285-9247-b8a3a6ba3490.Date.1.1681911277174",
                                                             "Column": {
-                                                                "DataSetIdentifier": "sl-ag-production",
+                                                                "DataSetIdentifier": "Cloudtrail New",
                                                                 "ColumnName": "Date"
                                                             },
-                                                            "HierarchyId": "08b16275-ebe5-4888-b26e-4014c7c2f08f"
+                                                            "HierarchyId": "4b5c9a32-4872-4ae9-9d61-1ec24065e343"
                                                         }
                                                     }
                                                 ],
@@ -282,10 +326,10 @@
                                                 "Colors": [
                                                     {
                                                         "CategoricalDimensionField": {
-                                                            "FieldId": "d4c839f4-b487-41ec-bbe7-0b1873d3c22c.activity_name.1.1681829037960",
+                                                            "FieldId": "9a10b0b4-f6d8-4285-9247-b8a3a6ba3490.api_operation.0.1681911250831",
                                                             "Column": {
-                                                                "DataSetIdentifier": "sl-ag-production",
-                                                                "ColumnName": "activity_name"
+                                                                "DataSetIdentifier": "Cloudtrail New",
+                                                                "ColumnName": "api_operation"
                                                             }
                                                         }
                                                     }
@@ -297,31 +341,19 @@
                                             "CategorySort": [
                                                 {
                                                     "FieldSort": {
-                                                        "FieldId": "d4c839f4-b487-41ec-bbe7-0b1873d3c22c.Date.1.1681828916158",
+                                                        "FieldId": "9a10b0b4-f6d8-4285-9247-b8a3a6ba3490.Date.1.1681911277174",
                                                         "Direction": "ASC"
                                                     }
                                                 }
                                             ],
                                             "CategoryItemsLimit": {
-                                                "OtherCategories": "EXCLUDE"
+                                                "OtherCategories": "INCLUDE"
                                             },
                                             "ColorItemsLimit": {
-                                                "OtherCategories": "EXCLUDE"
+                                                "OtherCategories": "INCLUDE"
                                             }
                                         },
                                         "BarsArrangement": "STACKED",
-                                        "PrimaryYAxisDisplayOptions": {
-                                            "DataOptions": {
-                                                "NumericAxisOptions": {
-                                                    "Scale": {
-                                                        "Logarithmic": {}
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        "Legend": {
-                                            "Width": "100px"
-                                        },
                                         "BarDataLabels": {
                                             "Visibility": "HIDDEN",
                                             "Overlap": "DISABLE_OVERLAP"
@@ -334,442 +366,7 @@
                                     "ColumnHierarchies": [
                                         {
                                             "DateTimeHierarchy": {
-                                                "HierarchyId": "08b16275-ebe5-4888-b26e-4014c7c2f08f",
-                                                "DrillDownFilters": []
-                                            }
-                                        }
-                                    ]
-                                }
-                            },
-                            {
-                                "PieChartVisual": {
-                                    "VisualId": "SecurityExecutiveDashboard_b6aa8b61-ae91-4b43-8094-82beb8c4f734",
-                                    "Title": {
-                                        "Visibility": "VISIBLE"
-                                    },
-                                    "Subtitle": {
-                                        "Visibility": "VISIBLE"
-                                    },
-                                    "ChartConfiguration": {
-                                        "FieldWells": {
-                                            "PieChartAggregatedFieldWells": {
-                                                "Category": [
-                                                    {
-                                                        "CategoricalDimensionField": {
-                                                            "FieldId": "6ab7340b-ead7-4155-a74b-3d7bdb12914f.Severity_Normalized.0.1681909454324",
-                                                            "Column": {
-                                                                "DataSetIdentifier": "SH New",
-                                                                "ColumnName": "Severity_Normalized"
-                                                            }
-                                                        }
-                                                    }
-                                                ],
-                                                "Values": []
-                                            }
-                                        },
-                                        "SortConfiguration": {
-                                            "CategoryItemsLimit": {
-                                                "OtherCategories": "INCLUDE"
-                                            },
-                                            "SmallMultiplesLimitConfiguration": {
-                                                "OtherCategories": "INCLUDE"
-                                            }
-                                        },
-                                        "DonutOptions": {
-                                            "ArcOptions": {
-                                                "ArcThickness": "MEDIUM"
-                                            }
-                                        },
-                                        "DataLabels": {
-                                            "Visibility": "VISIBLE",
-                                            "Overlap": "DISABLE_OVERLAP"
-                                        },
-                                        "Tooltip": {
-                                            "TooltipVisibility": "VISIBLE",
-                                            "SelectedTooltipType": "BASIC",
-                                            "FieldBasedTooltip": {
-                                                "AggregationVisibility": "HIDDEN",
-                                                "TooltipTitleType": "PRIMARY_VALUE",
-                                                "TooltipFields": [
-                                                    {
-                                                        "FieldTooltipItem": {
-                                                            "FieldId": "6ab7340b-ead7-4155-a74b-3d7bdb12914f.Severity_Normalized.0.1681909454324",
-                                                            "Visibility": "VISIBLE"
-                                                        }
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    },
-                                    "Actions": [],
-                                    "ColumnHierarchies": []
-                                }
-                            },
-                            {
-                                "PieChartVisual": {
-                                    "VisualId": "SecurityExecutiveDashboard_9430eb1a-4dbd-4a0b-bbcd-472e6a42c6e4",
-                                    "Title": {
-                                        "Visibility": "VISIBLE"
-                                    },
-                                    "Subtitle": {
-                                        "Visibility": "VISIBLE"
-                                    },
-                                    "ChartConfiguration": {
-                                        "FieldWells": {
-                                            "PieChartAggregatedFieldWells": {
-                                                "Category": [
-                                                    {
-                                                        "CategoricalDimensionField": {
-                                                            "FieldId": "6ab7340b-ead7-4155-a74b-3d7bdb12914f.region.0.1681828309009",
-                                                            "Column": {
-                                                                "DataSetIdentifier": "SH New",
-                                                                "ColumnName": "region"
-                                                            }
-                                                        }
-                                                    }
-                                                ],
-                                                "Values": []
-                                            }
-                                        },
-                                        "SortConfiguration": {
-                                            "CategoryItemsLimit": {
-                                                "OtherCategories": "INCLUDE"
-                                            },
-                                            "SmallMultiplesLimitConfiguration": {
-                                                "OtherCategories": "INCLUDE"
-                                            }
-                                        },
-                                        "DonutOptions": {
-                                            "ArcOptions": {
-                                                "ArcThickness": "MEDIUM"
-                                            }
-                                        },
-                                        "DataLabels": {
-                                            "Visibility": "VISIBLE",
-                                            "Overlap": "DISABLE_OVERLAP"
-                                        },
-                                        "Tooltip": {
-                                            "TooltipVisibility": "VISIBLE",
-                                            "SelectedTooltipType": "BASIC",
-                                            "FieldBasedTooltip": {
-                                                "AggregationVisibility": "HIDDEN",
-                                                "TooltipTitleType": "PRIMARY_VALUE",
-                                                "TooltipFields": [
-                                                    {
-                                                        "FieldTooltipItem": {
-                                                            "FieldId": "6ab7340b-ead7-4155-a74b-3d7bdb12914f.region.0.1681828309009",
-                                                            "Visibility": "VISIBLE"
-                                                        }
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    },
-                                    "Actions": [],
-                                    "ColumnHierarchies": []
-                                }
-                            },
-                            {
-                                "PieChartVisual": {
-                                    "VisualId": "SecurityExecutiveDashboard_c4c8007f-1769-4ea4-9ec4-d264ae5f5c7e",
-                                    "Title": {
-                                        "Visibility": "VISIBLE"
-                                    },
-                                    "Subtitle": {
-                                        "Visibility": "VISIBLE"
-                                    },
-                                    "ChartConfiguration": {
-                                        "FieldWells": {
-                                            "PieChartAggregatedFieldWells": {
-                                                "Category": [
-                                                    {
-                                                        "CategoricalDimensionField": {
-                                                            "FieldId": "6ab7340b-ead7-4155-a74b-3d7bdb12914f.Severity_Original.0.1681828266484",
-                                                            "Column": {
-                                                                "DataSetIdentifier": "SH New",
-                                                                "ColumnName": "Severity_Original"
-                                                            }
-                                                        }
-                                                    }
-                                                ],
-                                                "Values": []
-                                            }
-                                        },
-                                        "SortConfiguration": {
-                                            "CategoryItemsLimit": {
-                                                "OtherCategories": "INCLUDE"
-                                            },
-                                            "SmallMultiplesLimitConfiguration": {
-                                                "OtherCategories": "INCLUDE"
-                                            }
-                                        },
-                                        "DonutOptions": {
-                                            "ArcOptions": {
-                                                "ArcThickness": "MEDIUM"
-                                            }
-                                        },
-                                        "DataLabels": {
-                                            "Visibility": "VISIBLE",
-                                            "Overlap": "DISABLE_OVERLAP"
-                                        },
-                                        "Tooltip": {
-                                            "TooltipVisibility": "VISIBLE",
-                                            "SelectedTooltipType": "BASIC",
-                                            "FieldBasedTooltip": {
-                                                "AggregationVisibility": "HIDDEN",
-                                                "TooltipTitleType": "PRIMARY_VALUE",
-                                                "TooltipFields": [
-                                                    {
-                                                        "FieldTooltipItem": {
-                                                            "FieldId": "6ab7340b-ead7-4155-a74b-3d7bdb12914f.Severity_Original.0.1681828266484",
-                                                            "Visibility": "VISIBLE"
-                                                        }
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    },
-                                    "Actions": [],
-                                    "ColumnHierarchies": []
-                                }
-                            },
-                            {
-                                "ComboChartVisual": {
-                                    "VisualId": "SecurityExecutiveDashboard_e12f6d03-3409-41f9-811e-530b03f7c1eb",
-                                    "Title": {
-                                        "Visibility": "VISIBLE"
-                                    },
-                                    "Subtitle": {
-                                        "Visibility": "VISIBLE"
-                                    },
-                                    "ChartConfiguration": {
-                                        "FieldWells": {
-                                            "ComboChartAggregatedFieldWells": {
-                                                "Category": [
-                                                    {
-                                                        "DateDimensionField": {
-                                                            "FieldId": "6ab7340b-ead7-4155-a74b-3d7bdb12914f.Date.1.1681828026026",
-                                                            "Column": {
-                                                                "DataSetIdentifier": "SH New",
-                                                                "ColumnName": "Date"
-                                                            },
-                                                            "HierarchyId": "f738754c-5f3a-4525-be0a-9ffb47c7be89"
-                                                        }
-                                                    }
-                                                ],
-                                                "BarValues": [],
-                                                "Colors": [
-                                                    {
-                                                        "CategoricalDimensionField": {
-                                                            "FieldId": "6ab7340b-ead7-4155-a74b-3d7bdb12914f.Severity_Original.2.1681828278867",
-                                                            "Column": {
-                                                                "DataSetIdentifier": "SH New",
-                                                                "ColumnName": "Severity_Original"
-                                                            }
-                                                        }
-                                                    }
-                                                ],
-                                                "LineValues": [
-                                                    {
-                                                        "CategoricalMeasureField": {
-                                                            "FieldId": "6ab7340b-ead7-4155-a74b-3d7bdb12914f.Severity_Normalized.2.1681828130319",
-                                                            "Column": {
-                                                                "DataSetIdentifier": "SH New",
-                                                                "ColumnName": "Severity_Normalized"
-                                                            },
-                                                            "AggregationFunction": "COUNT"
-                                                        }
-                                                    }
-                                                ]
-                                            }
-                                        },
-                                        "SortConfiguration": {
-                                            "CategorySort": [
-                                                {
-                                                    "FieldSort": {
-                                                        "FieldId": "6ab7340b-ead7-4155-a74b-3d7bdb12914f.Date.1.1681828026026",
-                                                        "Direction": "ASC"
-                                                    }
-                                                }
-                                            ],
-                                            "CategoryItemsLimit": {
-                                                "OtherCategories": "INCLUDE"
-                                            },
-                                            "ColorItemsLimit": {
-                                                "OtherCategories": "INCLUDE"
-                                            }
-                                        },
-                                        "BarsArrangement": "CLUSTERED",
-                                        "PrimaryYAxisDisplayOptions": {
-                                            "DataOptions": {
-                                                "NumericAxisOptions": {
-                                                    "Scale": {
-                                                        "Logarithmic": {}
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        "BarDataLabels": {
-                                            "Visibility": "HIDDEN",
-                                            "Overlap": "DISABLE_OVERLAP"
-                                        },
-                                        "LineDataLabels": {
-                                            "Overlap": "DISABLE_OVERLAP"
-                                        }
-                                    },
-                                    "Actions": [],
-                                    "ColumnHierarchies": [
-                                        {
-                                            "DateTimeHierarchy": {
-                                                "HierarchyId": "f738754c-5f3a-4525-be0a-9ffb47c7be89",
-                                                "DrillDownFilters": []
-                                            }
-                                        }
-                                    ]
-                                }
-                            },
-                            {
-                                "PieChartVisual": {
-                                    "VisualId": "SecurityExecutiveDashboard_5fe7a1a6-203f-43cd-acbc-df513aa501b4",
-                                    "Title": {
-                                        "Visibility": "VISIBLE"
-                                    },
-                                    "Subtitle": {
-                                        "Visibility": "VISIBLE"
-                                    },
-                                    "ChartConfiguration": {
-                                        "FieldWells": {
-                                            "PieChartAggregatedFieldWells": {
-                                                "Category": [
-                                                    {
-                                                        "CategoricalDimensionField": {
-                                                            "FieldId": "6ab7340b-ead7-4155-a74b-3d7bdb12914f.desc.0.1681828295540",
-                                                            "Column": {
-                                                                "DataSetIdentifier": "SH New",
-                                                                "ColumnName": "desc"
-                                                            }
-                                                        }
-                                                    }
-                                                ],
-                                                "Values": []
-                                            }
-                                        },
-                                        "SortConfiguration": {
-                                            "CategoryItemsLimit": {
-                                                "OtherCategories": "INCLUDE"
-                                            },
-                                            "SmallMultiplesLimitConfiguration": {
-                                                "OtherCategories": "INCLUDE"
-                                            }
-                                        },
-                                        "DonutOptions": {
-                                            "ArcOptions": {
-                                                "ArcThickness": "MEDIUM"
-                                            }
-                                        },
-                                        "DataLabels": {
-                                            "Visibility": "VISIBLE",
-                                            "Overlap": "DISABLE_OVERLAP"
-                                        },
-                                        "Tooltip": {
-                                            "TooltipVisibility": "VISIBLE",
-                                            "SelectedTooltipType": "BASIC",
-                                            "FieldBasedTooltip": {
-                                                "AggregationVisibility": "HIDDEN",
-                                                "TooltipTitleType": "PRIMARY_VALUE",
-                                                "TooltipFields": [
-                                                    {
-                                                        "FieldTooltipItem": {
-                                                            "FieldId": "6ab7340b-ead7-4155-a74b-3d7bdb12914f.desc.0.1681828295540",
-                                                            "Visibility": "VISIBLE"
-                                                        }
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    },
-                                    "Actions": [],
-                                    "ColumnHierarchies": []
-                                }
-                            },
-                            {
-                                "ComboChartVisual": {
-                                    "VisualId": "SecurityExecutiveDashboard_8a0fb23b-d35b-4d57-a515-b8fa2a351d12",
-                                    "Title": {
-                                        "Visibility": "VISIBLE"
-                                    },
-                                    "Subtitle": {
-                                        "Visibility": "VISIBLE"
-                                    },
-                                    "ChartConfiguration": {
-                                        "FieldWells": {
-                                            "ComboChartAggregatedFieldWells": {
-                                                "Category": [
-                                                    {
-                                                        "DateDimensionField": {
-                                                            "FieldId": "d4c839f4-b487-41ec-bbe7-0b1873d3c22c.Date.1.1681828916158",
-                                                            "Column": {
-                                                                "DataSetIdentifier": "sl-ag-production",
-                                                                "ColumnName": "Date"
-                                                            },
-                                                            "HierarchyId": "d2235bf7-506d-4b5b-b0c5-b0a605c3aa94"
-                                                        }
-                                                    }
-                                                ],
-                                                "BarValues": [],
-                                                "Colors": [
-                                                    {
-                                                        "CategoricalDimensionField": {
-                                                            "FieldId": "d4c839f4-b487-41ec-bbe7-0b1873d3c22c.class_name.1.1681828929607",
-                                                            "Column": {
-                                                                "DataSetIdentifier": "sl-ag-production",
-                                                                "ColumnName": "class_name"
-                                                            }
-                                                        }
-                                                    }
-                                                ],
-                                                "LineValues": []
-                                            }
-                                        },
-                                        "SortConfiguration": {
-                                            "CategorySort": [
-                                                {
-                                                    "FieldSort": {
-                                                        "FieldId": "d4c839f4-b487-41ec-bbe7-0b1873d3c22c.Date.1.1681828916158",
-                                                        "Direction": "ASC"
-                                                    }
-                                                }
-                                            ],
-                                            "CategoryItemsLimit": {
-                                                "OtherCategories": "EXCLUDE"
-                                            },
-                                            "ColorItemsLimit": {
-                                                "OtherCategories": "EXCLUDE"
-                                            }
-                                        },
-                                        "BarsArrangement": "STACKED",
-                                        "PrimaryYAxisDisplayOptions": {
-                                            "DataOptions": {
-                                                "NumericAxisOptions": {
-                                                    "Scale": {
-                                                        "Logarithmic": {}
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        "BarDataLabels": {
-                                            "Visibility": "HIDDEN",
-                                            "Overlap": "DISABLE_OVERLAP"
-                                        },
-                                        "LineDataLabels": {
-                                            "Overlap": "DISABLE_OVERLAP"
-                                        }
-                                    },
-                                    "Actions": [],
-                                    "ColumnHierarchies": [
-                                        {
-                                            "DateTimeHierarchy": {
-                                                "HierarchyId": "d2235bf7-506d-4b5b-b0c5-b0a605c3aa94",
+                                                "HierarchyId": "4b5c9a32-4872-4ae9-9d61-1ec24065e343",
                                                 "DrillDownFilters": []
                                             }
                                         }
@@ -778,7 +375,7 @@
                             },
                             {
                                 "BarChartVisual": {
-                                    "VisualId": "SecurityExecutiveDashboard_4c8815cc-6e6f-4965-b3e0-72ff92f5212b",
+                                    "VisualId": "SecurityOperatorDashboard_2f854b3e-d62b-49e7-ad58-29ad883ef98e",
                                     "Title": {
                                         "Visibility": "VISIBLE"
                                     },
@@ -791,22 +388,33 @@
                                                 "Category": [
                                                     {
                                                         "CategoricalDimensionField": {
-                                                            "FieldId": "6ab7340b-ead7-4155-a74b-3d7bdb12914f.accountid.1.1681909539967",
+                                                            "FieldId": "9a10b0b4-f6d8-4285-9247-b8a3a6ba3490.account_uid.0.1681911722867",
                                                             "Column": {
-                                                                "DataSetIdentifier": "SH New",
-                                                                "ColumnName": "accountid"
+                                                                "DataSetIdentifier": "Cloudtrail New",
+                                                                "ColumnName": "account_uid"
                                                             }
                                                         }
                                                     }
                                                 ],
-                                                "Values": [],
+                                                "Values": [
+                                                    {
+                                                        "CategoricalMeasureField": {
+                                                            "FieldId": "9a10b0b4-f6d8-4285-9247-b8a3a6ba3490.api_operation.2.1681912419771",
+                                                            "Column": {
+                                                                "DataSetIdentifier": "Cloudtrail New",
+                                                                "ColumnName": "api_operation"
+                                                            },
+                                                            "AggregationFunction": "COUNT"
+                                                        }
+                                                    }
+                                                ],
                                                 "Colors": [
                                                     {
                                                         "CategoricalDimensionField": {
-                                                            "FieldId": "6ab7340b-ead7-4155-a74b-3d7bdb12914f.Severity_Normalized.0.1681909539967",
+                                                            "FieldId": "9a10b0b4-f6d8-4285-9247-b8a3a6ba3490.api_operation.1.1681911731752",
                                                             "Column": {
-                                                                "DataSetIdentifier": "SH New",
-                                                                "ColumnName": "Severity_Normalized"
+                                                                "DataSetIdentifier": "Cloudtrail New",
+                                                                "ColumnName": "api_operation"
                                                             }
                                                         }
                                                     }
@@ -817,20 +425,19 @@
                                             "CategorySort": [
                                                 {
                                                     "FieldSort": {
-                                                        "FieldId": "6ab7340b-ead7-4155-a74b-3d7bdb12914f.accountid.1.1681909539967",
+                                                        "FieldId": "9a10b0b4-f6d8-4285-9247-b8a3a6ba3490.api_operation.2.1681912419771",
                                                         "Direction": "DESC"
                                                     }
                                                 }
                                             ],
                                             "CategoryItemsLimit": {
-                                                "ItemsLimit": 20,
-                                                "OtherCategories": "INCLUDE"
+                                                "OtherCategories": "EXCLUDE"
                                             },
                                             "ColorItemsLimit": {
-                                                "OtherCategories": "INCLUDE"
+                                                "OtherCategories": "EXCLUDE"
                                             },
                                             "SmallMultiplesLimitConfiguration": {
-                                                "OtherCategories": "INCLUDE"
+                                                "OtherCategories": "EXCLUDE"
                                             }
                                         },
                                         "Orientation": "HORIZONTAL",
@@ -848,13 +455,19 @@
                                                 "TooltipFields": [
                                                     {
                                                         "FieldTooltipItem": {
-                                                            "FieldId": "6ab7340b-ead7-4155-a74b-3d7bdb12914f.accountid.1.1681909539967",
+                                                            "FieldId": "9a10b0b4-f6d8-4285-9247-b8a3a6ba3490.account_uid.0.1681911722867",
                                                             "Visibility": "VISIBLE"
                                                         }
                                                     },
                                                     {
                                                         "FieldTooltipItem": {
-                                                            "FieldId": "6ab7340b-ead7-4155-a74b-3d7bdb12914f.Severity_Normalized.0.1681909539967",
+                                                            "FieldId": "9a10b0b4-f6d8-4285-9247-b8a3a6ba3490.api_operation.1.1681911731752",
+                                                            "Visibility": "VISIBLE"
+                                                        }
+                                                    },
+                                                    {
+                                                        "FieldTooltipItem": {
+                                                            "FieldId": "9a10b0b4-f6d8-4285-9247-b8a3a6ba3490.api_operation.1.1681911731752",
                                                             "Visibility": "VISIBLE"
                                                         }
                                                     }
@@ -867,30 +480,71 @@
                                 }
                             },
                             {
-                                "InsightVisual": {
-                                    "VisualId": "SecurityExecutiveDashboard_ef7f0568-70c3-4be7-8991-0e03da020b51",
+                                "SankeyDiagramVisual": {
+                                    "VisualId": "SecurityOperatorDashboard_eb4b7715-4fe9-4bef-bffc-a34528b6c873",
                                     "Title": {
                                         "Visibility": "VISIBLE"
                                     },
                                     "Subtitle": {
                                         "Visibility": "VISIBLE"
                                     },
-                                    "InsightConfiguration": {
-                                        "Computations": []
+                                    "ChartConfiguration": {
+                                        "FieldWells": {
+                                            "SankeyDiagramAggregatedFieldWells": {
+                                                "Source": [
+                                                    {
+                                                        "CategoricalDimensionField": {
+                                                            "FieldId": "0ddebb26-5cb8-4a96-ad8d-1f833d297908.accountId.1.1681912481544",
+                                                            "Column": {
+                                                                "DataSetIdentifier": "R53 New",
+                                                                "ColumnName": "accountId"
+                                                            }
+                                                        }
+                                                    }
+                                                ],
+                                                "Destination": [
+                                                    {
+                                                        "CategoricalDimensionField": {
+                                                            "FieldId": "0ddebb26-5cb8-4a96-ad8d-1f833d297908.srcIp.0.1681912481544",
+                                                            "Column": {
+                                                                "DataSetIdentifier": "R53 New",
+                                                                "ColumnName": "srcIp"
+                                                            }
+                                                        }
+                                                    }
+                                                ],
+                                                "Weight": []
+                                            }
+                                        },
+                                        "SortConfiguration": {
+                                            "SourceItemsLimit": {
+                                                "ItemsLimit": 10
+                                            },
+                                            "DestinationItemsLimit": {
+                                                "ItemsLimit": 10
+                                            }
+                                        },
+                                        "DataLabels": {
+                                            "Visibility": "VISIBLE",
+                                            "Overlap": "DISABLE_OVERLAP"
+                                        }
                                     },
-                                    "Actions": [],
-                                    "DataSetIdentifier": "sl-ag-production"
+                                    "Actions": []
                                 }
                             }
                         ],
                         "TextBoxes": [
                             {
-                                "SheetTextBoxId": "SecurityExecutiveDashboard_ee04e7c6-47e8-4b9b-bf8b-134273f328ae",
-                                "Content": "<text-box>\n  <block align=\"center\">\n    <inline font-size=\"20px\">\n      <b>Security Lake Overview</b>\n    </inline>\n  </block>\n</text-box>"
+                                "SheetTextBoxId": "SecurityOperatorDashboard_1af5c574-f3cd-426b-9247-908fc99c31c8",
+                                "Content": "<text-box>\n  <block align=\"center\">\n    <inline font-size=\"20px\">\n      <b>Account Connectivity</b>\n    </inline>\n  </block>\n  <br/>\n  <block align=\"center\"/>\n</text-box>"
                             },
                             {
-                                "SheetTextBoxId": "SecurityExecutiveDashboard_d36a2fb0-012d-4825-8a05-6fc633b8f678",
-                                "Content": "<text-box>\n  <block align=\"center\">\n    <inline font-size=\"20px\">\n      <b>Security Hub Findings</b>\n    </inline>\n  </block>\n</text-box>"
+                                "SheetTextBoxId": "SecurityOperatorDashboard_cecb79f2-6b61-4f71-ba33-fcce0beaf3f2",
+                                "Content": "<text-box>\n  <block align=\"center\">\n    <inline font-size=\"20px\">\n      <b>API Analytics</b>\n    </inline>\n  </block>\n</text-box>"
+                            },
+                            {
+                                "SheetTextBoxId": "SecurityOperatorDashboard_99fc5637-fa60-4744-812e-c141a666c82f",
+                                "Content": "<text-box>\n  <block align=\"center\">\n    <inline font-size=\"20px\">\n      <b>Rejected Traffic</b>\n    </inline>\n  </block>\n</text-box>"
                             }
                         ],
                         "Layouts": [
@@ -899,116 +553,84 @@
                                     "GridLayout": {
                                         "Elements": [
                                             {
-                                                "ElementId": "SecurityExecutiveDashboard_ef7f0568-70c3-4be7-8991-0e03da020b51",
-                                                "ElementType": "VISUAL",
-                                                "ColumnIndex": 0,
-                                                "ColumnSpan": 18,
-                                                "RowIndex": 0,
-                                                "RowSpan": 6
-                                            },
-                                            {
-                                                "ElementId": "SecurityExecutiveDashboard_38389652-7a68-4a1b-af0a-14a1758d5a0f",
-                                                "ElementType": "VISUAL",
-                                                "ColumnIndex": 18,
-                                                "ColumnSpan": 18,
-                                                "RowIndex": 0,
-                                                "RowSpan": 6
-                                            },
-                                            {
-                                                "ElementId": "SecurityExecutiveDashboard_d36a2fb0-012d-4825-8a05-6fc633b8f678",
+                                                "ElementId": "SecurityOperatorDashboard_cecb79f2-6b61-4f71-ba33-fcce0beaf3f2",
                                                 "ElementType": "TEXT_BOX",
                                                 "ColumnIndex": 0,
                                                 "ColumnSpan": 36,
-                                                "RowIndex": 6,
+                                                "RowIndex": 0,
                                                 "RowSpan": 1
                                             },
                                             {
-                                                "ElementId": "SecurityExecutiveDashboard_4c8815cc-6e6f-4965-b3e0-72ff92f5212b",
+                                                "ElementId": "SecurityOperatorDashboard_2f854b3e-d62b-49e7-ad58-29ad883ef98e",
                                                 "ElementType": "VISUAL",
                                                 "ColumnIndex": 0,
-                                                "ColumnSpan": 18,
-                                                "RowIndex": 7,
-                                                "RowSpan": 9
+                                                "ColumnSpan": 36,
+                                                "RowIndex": 1,
+                                                "RowSpan": 12
                                             },
                                             {
-                                                "ElementId": "SecurityExecutiveDashboard_e12f6d03-3409-41f9-811e-530b03f7c1eb",
-                                                "ElementType": "VISUAL",
-                                                "ColumnIndex": 18,
-                                                "ColumnSpan": 18,
-                                                "RowIndex": 7,
-                                                "RowSpan": 9
-                                            },
-                                            {
-                                                "ElementId": "SecurityExecutiveDashboard_5fe7a1a6-203f-43cd-acbc-df513aa501b4",
+                                                "ElementId": "SecurityOperatorDashboard_dc683e38-efd8-4936-a404-895d234449e8",
                                                 "ElementType": "VISUAL",
                                                 "ColumnIndex": 0,
-                                                "ColumnSpan": 9,
-                                                "RowIndex": 16,
-                                                "RowSpan": 7
+                                                "ColumnSpan": 36,
+                                                "RowIndex": 13,
+                                                "RowSpan": 12
                                             },
                                             {
-                                                "ElementId": "SecurityExecutiveDashboard_b6aa8b61-ae91-4b43-8094-82beb8c4f734",
+                                                "ElementId": "SecurityOperatorDashboard_ef68e453-c098-4cb8-be29-455474658600",
                                                 "ElementType": "VISUAL",
-                                                "ColumnIndex": 9,
-                                                "ColumnSpan": 9,
-                                                "RowIndex": 16,
-                                                "RowSpan": 7
+                                                "ColumnIndex": 0,
+                                                "ColumnSpan": 36,
+                                                "RowIndex": 25,
+                                                "RowSpan": 12
                                             },
                                             {
-                                                "ElementId": "SecurityExecutiveDashboard_c4c8007f-1769-4ea4-9ec4-d264ae5f5c7e",
-                                                "ElementType": "VISUAL",
-                                                "ColumnIndex": 18,
-                                                "ColumnSpan": 9,
-                                                "RowIndex": 16,
-                                                "RowSpan": 7
-                                            },
-                                            {
-                                                "ElementId": "SecurityExecutiveDashboard_9430eb1a-4dbd-4a0b-bbcd-472e6a42c6e4",
-                                                "ElementType": "VISUAL",
-                                                "ColumnIndex": 27,
-                                                "ColumnSpan": 9,
-                                                "RowIndex": 16,
-                                                "RowSpan": 7
-                                            },
-                                            {
-                                                "ElementId": "SecurityExecutiveDashboard_ee04e7c6-47e8-4b9b-bf8b-134273f328ae",
+                                                "ElementId": "SecurityOperatorDashboard_1af5c574-f3cd-426b-9247-908fc99c31c8",
                                                 "ElementType": "TEXT_BOX",
                                                 "ColumnIndex": 0,
                                                 "ColumnSpan": 36,
-                                                "RowIndex": 23,
+                                                "RowIndex": 37,
                                                 "RowSpan": 1
                                             },
                                             {
-                                                "ElementId": "SecurityExecutiveDashboard_8a0fb23b-d35b-4d57-a515-b8fa2a351d12",
+                                                "ElementId": "SecurityOperatorDashboard_47a82dff-8e7b-42e0-87ff-c873c3897131",
                                                 "ElementType": "VISUAL",
                                                 "ColumnIndex": 0,
                                                 "ColumnSpan": 18,
-                                                "RowIndex": 24,
-                                                "RowSpan": 10
+                                                "RowIndex": 38,
+                                                "RowSpan": 12
                                             },
                                             {
-                                                "ElementId": "SecurityExecutiveDashboard_8ac9abb1-89a9-4de2-8309-b826839c34bb",
+                                                "ElementId": "SecurityOperatorDashboard_eb4b7715-4fe9-4bef-bffc-a34528b6c873",
                                                 "ElementType": "VISUAL",
                                                 "ColumnIndex": 18,
                                                 "ColumnSpan": 18,
-                                                "RowIndex": 24,
-                                                "RowSpan": 10
+                                                "RowIndex": 38,
+                                                "RowSpan": 12
                                             },
                                             {
-                                                "ElementId": "SecurityExecutiveDashboard_8f71d514-4f78-4ca9-ae03-43fefcf967c0",
+                                                "ElementId": "SecurityOperatorDashboard_99fc5637-fa60-4744-812e-c141a666c82f",
+                                                "ElementType": "TEXT_BOX",
+                                                "ColumnIndex": 0,
+                                                "ColumnSpan": 36,
+                                                "RowIndex": 50,
+                                                "RowSpan": 1
+                                            },
+                                            {
+                                                "ElementId": "SecurityOperatorDashboard_5025adcd-a21f-4571-a9b4-1d24f2cd08b6",
                                                 "ElementType": "VISUAL",
                                                 "ColumnIndex": 0,
                                                 "ColumnSpan": 18,
-                                                "RowIndex": 34,
-                                                "RowSpan": 10
+                                                "RowIndex": 51,
+                                                "RowSpan": 12
                                             },
                                             {
-                                                "ElementId": "SecurityExecutiveDashboard_257b015e-9d63-438d-9a85-812ec76da029",
+                                                "ElementId": "SecurityOperatorDashboard_cdef8db9-c811-44b3-8c00-285586923ca3",
                                                 "ElementType": "VISUAL",
                                                 "ColumnIndex": 18,
                                                 "ColumnSpan": 18,
-                                                "RowIndex": 34,
-                                                "RowSpan": 10
+                                                "RowIndex": 51,
+                                                "RowSpan": 12
                                             }
                                         ],
                                         "CanvasSizeOptions": {
@@ -1027,11 +649,15 @@
                                     "GridLayout": {
                                         "Elements": [
                                             {
-                                                "ElementId": "3e8648db-e204-4a23-8409-ee370f6c5095",
+                                                "ElementId": "d77ecef9-e046-43df-8ac4-043a29b9b36f",
                                                 "ElementType": "FILTER_CONTROL",
-                                                "ColumnIndex": 0,
+                                                "ColumnSpan": 3,
+                                                "RowSpan": 1
+                                            },
+                                            {
+                                                "ElementId": "eb9637e3-88ed-4062-aaec-77ae27e77642",
+                                                "ElementType": "FILTER_CONTROL",
                                                 "ColumnSpan": 2,
-                                                "RowIndex": 0,
                                                 "RowSpan": 1
                                             }
                                         ]
@@ -1046,19 +672,21 @@
                 "ParameterDeclarations": [],
                 "FilterGroups": [
                     {
-                        "FilterGroupId": "b5ba431a-9b0c-4391-a88b-72d0b85f1859",
+                        "FilterGroupId": "6b19fd30-d680-4175-a4fa-cc7ea197ce96",
                         "Filters": [
                             {
                                 "CategoryFilter": {
-                                    "FilterId": "6988b1e2-3126-4276-a464-6fa90b12da2a",
+                                    "FilterId": "c5f550f2-9759-455d-b4e8-24a057885066",
                                     "Column": {
                                         "DataSetIdentifier": "vpc-flow-data",
-                                        "ColumnName": "account_uid"
+                                        "ColumnName": "activity_name"
                                     },
                                     "Configuration": {
                                         "FilterListConfiguration": {
                                             "MatchOperator": "CONTAINS",
-                                            "SelectAllOptions": "FILTER_ALL_VALUES"
+                                            "CategoryValues": [
+                                                "Refused"
+                                            ]
                                         }
                                     }
                                 }
@@ -1068,181 +696,24 @@
                             "SelectedSheets": {
                                 "SheetVisualScopingConfigurations": [
                                     {
-                                        "SheetId": "SecurityExecutiveDashboard_d12f47cb-29ab-46a5-80a0-08d8669e3222",
-                                        "Scope": "ALL_VISUALS"
+                                        "SheetId": "SecurityOperatorDashboard_4bea718f-d96f-4ad6-8da2-6f6438aa0056",
+                                        "Scope": "SELECTED_VISUALS",
+                                        "VisualIds": [
+                                            "SecurityOperatorDashboard_cdef8db9-c811-44b3-8c00-285586923ca3"
+                                        ]
                                     }
                                 ]
                             }
                         },
                         "Status": "ENABLED",
-                        "CrossDataset": "ALL_DATASETS"
+                        "CrossDataset": "SINGLE_DATASET"
                     },
                     {
-                        "FilterGroupId": "8ba12046-bfcd-4ec5-b987-abf4c54ccaba",
-                        "Filters": [
-                            {
-                                "CategoryFilter": {
-                                    "FilterId": "2b7aec5c-c380-43b0-bb5f-8c0a5fdc02be",
-                                    "Column": {
-                                        "DataSetIdentifier": "vpc-flow-data",
-                                        "ColumnName": "cloud_region"
-                                    },
-                                    "Configuration": {
-                                        "FilterListConfiguration": {
-                                            "MatchOperator": "CONTAINS",
-                                            "SelectAllOptions": "FILTER_ALL_VALUES"
-                                        }
-                                    }
-                                }
-                            }
-                        ],
-                        "ScopeConfiguration": {
-                            "SelectedSheets": {
-                                "SheetVisualScopingConfigurations": [
-                                    {
-                                        "SheetId": "SecurityExecutiveDashboard_d12f47cb-29ab-46a5-80a0-08d8669e3222",
-                                        "Scope": "ALL_VISUALS"
-                                    }
-                                ]
-                            }
-                        },
-                        "Status": "ENABLED",
-                        "CrossDataset": "ALL_DATASETS"
-                    },
-                    {
-                        "FilterGroupId": "b2bdc4e9-b744-43f7-816d-a1cfc555494a",
-                        "Filters": [
-                            {
-                                "CategoryFilter": {
-                                    "FilterId": "4539e6b2-392a-4477-b125-65af9fdcb283",
-                                    "Column": {
-                                        "DataSetIdentifier": "vpc-flow-data",
-                                        "ColumnName": "dst_endpoint_ip"
-                                    },
-                                    "Configuration": {
-                                        "FilterListConfiguration": {
-                                            "MatchOperator": "CONTAINS",
-                                            "SelectAllOptions": "FILTER_ALL_VALUES"
-                                        }
-                                    }
-                                }
-                            }
-                        ],
-                        "ScopeConfiguration": {
-                            "SelectedSheets": {
-                                "SheetVisualScopingConfigurations": [
-                                    {
-                                        "SheetId": "SecurityExecutiveDashboard_d12f47cb-29ab-46a5-80a0-08d8669e3222",
-                                        "Scope": "ALL_VISUALS"
-                                    }
-                                ]
-                            }
-                        },
-                        "Status": "ENABLED",
-                        "CrossDataset": "ALL_DATASETS"
-                    },
-                    {
-                        "FilterGroupId": "e9a0f4f5-d18b-495b-a75b-a7dae15cad2f",
-                        "Filters": [
-                            {
-                                "CategoryFilter": {
-                                    "FilterId": "dcf2ae61-1256-48af-b885-6b9dc58291a5",
-                                    "Column": {
-                                        "DataSetIdentifier": "vpc-flow-data",
-                                        "ColumnName": "src_endpoint_ip"
-                                    },
-                                    "Configuration": {
-                                        "FilterListConfiguration": {
-                                            "MatchOperator": "CONTAINS",
-                                            "SelectAllOptions": "FILTER_ALL_VALUES"
-                                        }
-                                    }
-                                }
-                            }
-                        ],
-                        "ScopeConfiguration": {
-                            "SelectedSheets": {
-                                "SheetVisualScopingConfigurations": [
-                                    {
-                                        "SheetId": "SecurityExecutiveDashboard_d12f47cb-29ab-46a5-80a0-08d8669e3222",
-                                        "Scope": "ALL_VISUALS"
-                                    }
-                                ]
-                            }
-                        },
-                        "Status": "ENABLED",
-                        "CrossDataset": "ALL_DATASETS"
-                    },
-                    {
-                        "FilterGroupId": "283f48d1-90ec-48dc-9552-3bf278afd5a3",
-                        "Filters": [
-                            {
-                                "CategoryFilter": {
-                                    "FilterId": "97358355-8843-4fd3-9b4e-cd36730faad2",
-                                    "Column": {
-                                        "DataSetIdentifier": "vpc-flow-data",
-                                        "ColumnName": "dst_endpoint_port"
-                                    },
-                                    "Configuration": {
-                                        "FilterListConfiguration": {
-                                            "MatchOperator": "CONTAINS",
-                                            "SelectAllOptions": "FILTER_ALL_VALUES"
-                                        }
-                                    }
-                                }
-                            }
-                        ],
-                        "ScopeConfiguration": {
-                            "SelectedSheets": {
-                                "SheetVisualScopingConfigurations": [
-                                    {
-                                        "SheetId": "SecurityExecutiveDashboard_d12f47cb-29ab-46a5-80a0-08d8669e3222",
-                                        "Scope": "ALL_VISUALS"
-                                    }
-                                ]
-                            }
-                        },
-                        "Status": "ENABLED",
-                        "CrossDataset": "ALL_DATASETS"
-                    },
-                    {
-                        "FilterGroupId": "1ed3d29d-33a4-44b1-b13a-7985cc694532",
-                        "Filters": [
-                            {
-                                "CategoryFilter": {
-                                    "FilterId": "8d222c21-e086-4c1b-b426-7fc4c8d9ace4",
-                                    "Column": {
-                                        "DataSetIdentifier": "vpc-flow-data",
-                                        "ColumnName": "src_endpoint_port"
-                                    },
-                                    "Configuration": {
-                                        "FilterListConfiguration": {
-                                            "MatchOperator": "CONTAINS",
-                                            "SelectAllOptions": "FILTER_ALL_VALUES"
-                                        }
-                                    }
-                                }
-                            }
-                        ],
-                        "ScopeConfiguration": {
-                            "SelectedSheets": {
-                                "SheetVisualScopingConfigurations": [
-                                    {
-                                        "SheetId": "SecurityExecutiveDashboard_d12f47cb-29ab-46a5-80a0-08d8669e3222",
-                                        "Scope": "ALL_VISUALS"
-                                    }
-                                ]
-                            }
-                        },
-                        "Status": "ENABLED",
-                        "CrossDataset": "ALL_DATASETS"
-                    },
-                    {
-                        "FilterGroupId": "5565b286-8b33-48b6-bb2b-b68d91df71d0",
+                        "FilterGroupId": "424add20-1aac-4275-9058-5a1130451298",
                         "Filters": [
                             {
                                 "TimeRangeFilter": {
-                                    "FilterId": "df35df21-45ed-49ad-b1bc-2257b1c89cc7",
+                                    "FilterId": "d4248a49-e22c-44e0-bb7f-68a6580d1034",
                                     "Column": {
                                         "DataSetIdentifier": "vpc-flow-data",
                                         "ColumnName": "Date"
@@ -1260,6 +731,356 @@
                                         }
                                     },
                                     "NullOption": "NON_NULLS_ONLY",
+                                    "TimeGranularity": "DAY"
+                                }
+                            }
+                        ],
+                        "ScopeConfiguration": {
+                            "SelectedSheets": {
+                                "SheetVisualScopingConfigurations": [
+                                    {
+                                        "SheetId": "SecurityOperatorDashboard_4bea718f-d96f-4ad6-8da2-6f6438aa0056",
+                                        "Scope": "ALL_VISUALS"
+                                    }
+                                ]
+                            }
+                        },
+                        "Status": "ENABLED",
+                        "CrossDataset": "ALL_DATASETS"
+                    },
+                    {
+                        "FilterGroupId": "aef4e03e-24e6-4d4f-8503-64d9b866e788",
+                        "Filters": [
+                            {
+                                "CategoryFilter": {
+                                    "FilterId": "7c3950fd-112d-4e76-8ac9-57f3ceef4547",
+                                    "Column": {
+                                        "DataSetIdentifier": "R53 New",
+                                        "ColumnName": "activityName"
+                                    },
+                                    "Configuration": {
+                                        "FilterListConfiguration": {
+                                            "MatchOperator": "CONTAINS",
+                                            "CategoryValues": [
+                                                "Unresolved"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        ],
+                        "ScopeConfiguration": {
+                            "SelectedSheets": {
+                                "SheetVisualScopingConfigurations": [
+                                    {
+                                        "SheetId": "SecurityOperatorDashboard_4bea718f-d96f-4ad6-8da2-6f6438aa0056",
+                                        "Scope": "SELECTED_VISUALS",
+                                        "VisualIds": [
+                                            "SecurityOperatorDashboard_5025adcd-a21f-4571-a9b4-1d24f2cd08b6"
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "Status": "ENABLED",
+                        "CrossDataset": "SINGLE_DATASET"
+                    },
+                    {
+                        "FilterGroupId": "9d862e32-e123-49b1-82a5-cacc24db0ecb",
+                        "Filters": [
+                            {
+                                "CategoryFilter": {
+                                    "FilterId": "e492cd99-6481-468f-b1f8-64fa3c6df625",
+                                    "Column": {
+                                        "DataSetIdentifier": "Cloudtrail New",
+                                        "ColumnName": "api_operation"
+                                    },
+                                    "Configuration": {
+                                        "FilterListConfiguration": {
+                                            "MatchOperator": "CONTAINS",
+                                            "SelectAllOptions": "FILTER_ALL_VALUES"
+                                        }
+                                    }
+                                }
+                            }
+                        ],
+                        "ScopeConfiguration": {
+                            "SelectedSheets": {
+                                "SheetVisualScopingConfigurations": [
+                                    {
+                                        "SheetId": "SecurityOperatorDashboard_4bea718f-d96f-4ad6-8da2-6f6438aa0056",
+                                        "Scope": "ALL_VISUALS"
+                                    }
+                                ]
+                            }
+                        },
+                        "Status": "ENABLED",
+                        "CrossDataset": "ALL_DATASETS"
+                    },
+                    {
+                        "FilterGroupId": "eaa3aa46-a134-4556-bc49-e3bf1acaefc0",
+                        "Filters": [
+                            {
+                                "CategoryFilter": {
+                                    "FilterId": "31fef44e-ce8e-4c89-b842-f424df9d73df",
+                                    "Column": {
+                                        "DataSetIdentifier": "vpc-flow-data",
+                                        "ColumnName": "account_uid"
+                                    },
+                                    "Configuration": {
+                                        "FilterListConfiguration": {
+                                            "MatchOperator": "CONTAINS",
+                                            "SelectAllOptions": "FILTER_ALL_VALUES"
+                                        }
+                                    }
+                                }
+                            }
+                        ],
+                        "ScopeConfiguration": {
+                            "SelectedSheets": {
+                                "SheetVisualScopingConfigurations": [
+                                    {
+                                        "SheetId": "SecurityOperatorDashboard_4bea718f-d96f-4ad6-8da2-6f6438aa0056",
+                                        "Scope": "SELECTED_VISUALS",
+                                        "VisualIds": [
+                                            "SecurityOperatorDashboard_47a82dff-8e7b-42e0-87ff-c873c3897131"
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "Status": "ENABLED",
+                        "CrossDataset": "SINGLE_DATASET"
+                    },
+                    {
+                        "FilterGroupId": "ee55007e-494b-4c14-81f1-99bc8b228320",
+                        "Filters": [
+                            {
+                                "CategoryFilter": {
+                                    "FilterId": "68cba237-3f01-4d21-a08b-c308f46d3f21",
+                                    "Column": {
+                                        "DataSetIdentifier": "vpc-flow-data",
+                                        "ColumnName": "cloud_region"
+                                    },
+                                    "Configuration": {
+                                        "FilterListConfiguration": {
+                                            "MatchOperator": "CONTAINS",
+                                            "SelectAllOptions": "FILTER_ALL_VALUES"
+                                        }
+                                    }
+                                }
+                            }
+                        ],
+                        "ScopeConfiguration": {
+                            "SelectedSheets": {
+                                "SheetVisualScopingConfigurations": [
+                                    {
+                                        "SheetId": "SecurityOperatorDashboard_4bea718f-d96f-4ad6-8da2-6f6438aa0056",
+                                        "Scope": "SELECTED_VISUALS",
+                                        "VisualIds": [
+                                            "SecurityOperatorDashboard_47a82dff-8e7b-42e0-87ff-c873c3897131"
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "Status": "ENABLED",
+                        "CrossDataset": "SINGLE_DATASET"
+                    },
+                    {
+                        "FilterGroupId": "6b333ba1-d19e-4086-a996-a72ea904262a",
+                        "Filters": [
+                            {
+                                "CategoryFilter": {
+                                    "FilterId": "306d7cae-351e-48a1-b73b-f0ed47c832f9",
+                                    "Column": {
+                                        "DataSetIdentifier": "vpc-flow-data",
+                                        "ColumnName": "activity_name"
+                                    },
+                                    "Configuration": {
+                                        "FilterListConfiguration": {
+                                            "MatchOperator": "CONTAINS",
+                                            "SelectAllOptions": "FILTER_ALL_VALUES"
+                                        }
+                                    }
+                                }
+                            }
+                        ],
+                        "ScopeConfiguration": {
+                            "SelectedSheets": {
+                                "SheetVisualScopingConfigurations": [
+                                    {
+                                        "SheetId": "SecurityOperatorDashboard_4bea718f-d96f-4ad6-8da2-6f6438aa0056",
+                                        "Scope": "SELECTED_VISUALS",
+                                        "VisualIds": [
+                                            "SecurityOperatorDashboard_47a82dff-8e7b-42e0-87ff-c873c3897131"
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "Status": "ENABLED",
+                        "CrossDataset": "SINGLE_DATASET"
+                    },
+                    {
+                        "FilterGroupId": "5fe0fab2-2195-4d5e-8d94-dae69659e806",
+                        "Filters": [
+                            {
+                                "CategoryFilter": {
+                                    "FilterId": "88d7b465-485c-450c-b374-aa3f3ea5365d",
+                                    "Column": {
+                                        "DataSetIdentifier": "vpc-flow-data",
+                                        "ColumnName": "dst_endpoint_ip"
+                                    },
+                                    "Configuration": {
+                                        "FilterListConfiguration": {
+                                            "MatchOperator": "CONTAINS",
+                                            "SelectAllOptions": "FILTER_ALL_VALUES"
+                                        }
+                                    }
+                                }
+                            }
+                        ],
+                        "ScopeConfiguration": {
+                            "SelectedSheets": {
+                                "SheetVisualScopingConfigurations": [
+                                    {
+                                        "SheetId": "SecurityOperatorDashboard_4bea718f-d96f-4ad6-8da2-6f6438aa0056",
+                                        "Scope": "SELECTED_VISUALS",
+                                        "VisualIds": [
+                                            "SecurityOperatorDashboard_47a82dff-8e7b-42e0-87ff-c873c3897131"
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "Status": "ENABLED",
+                        "CrossDataset": "SINGLE_DATASET"
+                    },
+                    {
+                        "FilterGroupId": "8c9e0211-9168-487b-bdbf-a29f146bff6d",
+                        "Filters": [
+                            {
+                                "CategoryFilter": {
+                                    "FilterId": "bee5e289-7267-4c9d-b691-fe73e461192e",
+                                    "Column": {
+                                        "DataSetIdentifier": "vpc-flow-data",
+                                        "ColumnName": "src_endpoint_ip"
+                                    },
+                                    "Configuration": {
+                                        "FilterListConfiguration": {
+                                            "MatchOperator": "CONTAINS",
+                                            "SelectAllOptions": "FILTER_ALL_VALUES"
+                                        }
+                                    }
+                                }
+                            }
+                        ],
+                        "ScopeConfiguration": {
+                            "SelectedSheets": {
+                                "SheetVisualScopingConfigurations": [
+                                    {
+                                        "SheetId": "SecurityOperatorDashboard_4bea718f-d96f-4ad6-8da2-6f6438aa0056",
+                                        "Scope": "SELECTED_VISUALS",
+                                        "VisualIds": [
+                                            "SecurityOperatorDashboard_47a82dff-8e7b-42e0-87ff-c873c3897131"
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "Status": "ENABLED",
+                        "CrossDataset": "SINGLE_DATASET"
+                    },
+                    {
+                        "FilterGroupId": "8f1b112c-c25c-4ad3-9bc1-a33dbc85c21d",
+                        "Filters": [
+                            {
+                                "CategoryFilter": {
+                                    "FilterId": "879f1f23-451a-4690-8751-d8ece3ff9a58",
+                                    "Column": {
+                                        "DataSetIdentifier": "vpc-flow-data",
+                                        "ColumnName": "dst_endpoint_port"
+                                    },
+                                    "Configuration": {
+                                        "FilterListConfiguration": {
+                                            "MatchOperator": "CONTAINS",
+                                            "SelectAllOptions": "FILTER_ALL_VALUES"
+                                        }
+                                    }
+                                }
+                            }
+                        ],
+                        "ScopeConfiguration": {
+                            "SelectedSheets": {
+                                "SheetVisualScopingConfigurations": [
+                                    {
+                                        "SheetId": "SecurityOperatorDashboard_4bea718f-d96f-4ad6-8da2-6f6438aa0056",
+                                        "Scope": "SELECTED_VISUALS",
+                                        "VisualIds": [
+                                            "SecurityOperatorDashboard_47a82dff-8e7b-42e0-87ff-c873c3897131"
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "Status": "ENABLED",
+                        "CrossDataset": "SINGLE_DATASET"
+                    },
+                    {
+                        "FilterGroupId": "ae76df2f-debe-491c-97d5-cd3b18cbf6dd",
+                        "Filters": [
+                            {
+                                "CategoryFilter": {
+                                    "FilterId": "7e9b15fc-b67d-41ea-9e5c-30d52f9b0d42",
+                                    "Column": {
+                                        "DataSetIdentifier": "vpc-flow-data",
+                                        "ColumnName": "src_endpoint_port"
+                                    },
+                                    "Configuration": {
+                                        "FilterListConfiguration": {
+                                            "MatchOperator": "CONTAINS",
+                                            "SelectAllOptions": "FILTER_ALL_VALUES"
+                                        }
+                                    }
+                                }
+                            }
+                        ],
+                        "ScopeConfiguration": {
+                            "SelectedSheets": {
+                                "SheetVisualScopingConfigurations": [
+                                    {
+                                        "SheetId": "SecurityOperatorDashboard_4bea718f-d96f-4ad6-8da2-6f6438aa0056",
+                                        "Scope": "SELECTED_VISUALS",
+                                        "VisualIds": [
+                                            "SecurityOperatorDashboard_47a82dff-8e7b-42e0-87ff-c873c3897131"
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "Status": "ENABLED",
+                        "CrossDataset": "SINGLE_DATASET"
+                    },
+                    {
+                        "FilterGroupId": "af97ff27-6d88-49c7-ad49-74afe4ce0bb3",
+                        "Filters": [
+                            {
+                                "TimeRangeFilter": {
+                                    "FilterId": "01223952-940c-4f0f-8eb0-a117a4422a65",
+                                    "Column": {
+                                        "DataSetIdentifier": "vpc-flow-data",
+                                        "ColumnName": "Date"
+                                    },
+                                    "IncludeMinimum": true,
+                                    "IncludeMaximum": true,
+                                    "RangeMinimumValue": {
+                                        "StaticValue": "2022-10-31T20:00:00-04:00"
+                                    },
+                                    "RangeMaximumValue": {
+                                        "StaticValue": "2023-04-28T10:20:00-04:00"
+                                    },
+                                    "NullOption": "NON_NULLS_ONLY",
                                     "TimeGranularity": "MINUTE"
                                 }
                             }
@@ -1268,14 +1089,17 @@
                             "SelectedSheets": {
                                 "SheetVisualScopingConfigurations": [
                                     {
-                                        "SheetId": "SecurityExecutiveDashboard_d12f47cb-29ab-46a5-80a0-08d8669e3222",
-                                        "Scope": "ALL_VISUALS"
+                                        "SheetId": "SecurityOperatorDashboard_4bea718f-d96f-4ad6-8da2-6f6438aa0056",
+                                        "Scope": "SELECTED_VISUALS",
+                                        "VisualIds": [
+                                            "SecurityOperatorDashboard_47a82dff-8e7b-42e0-87ff-c873c3897131"
+                                        ]
                                     }
                                 ]
                             }
                         },
                         "Status": "ENABLED",
-                        "CrossDataset": "ALL_DATASETS"
+                        "CrossDataset": "SINGLE_DATASET"
                     }
                 ],
                 "ColumnConfigurations": [
@@ -1337,7 +1161,7 @@
             },
             "Permissions": [
                 {
-                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-executive-group",
+                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-operator-group",
                     "Actions": [
                         "quicksight:DescribeDashboard",
                         "quicksight:ListDashboardVersions",
@@ -1595,7 +1419,7 @@
             ],
             "Permissions": [
                 {
-                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-executive-group",
+                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-operator-group",
                     "Actions": [
                         "quicksight:DescribeDataSet",
                         "quicksight:DescribeDataSetPermissions",
@@ -1616,7 +1440,7 @@
                     "CustomSql": {
                         "DataSourceArn": "arn:aws:quicksight:<aws-region>:<aws-account>:datasource/cloudtrail-datasource",
                         "Name": "New custom SQL",
-                        "SqlQuery": "SELECT \r\n    cast(from_unixtime(time/1000) as timestamp) as Date,\r\n    cloud.region,\r\n    http_request.user_agent,\r\n\r\n    api.response.error as api_response_error,\r\n    api.response.message as api_response_message,\r\n    api.operation as api_operation,\r\n    api.request.uid as api_request_uid,\r\n    api.service.name as api_service_name,\r\n    \r\n    src_endpoint.uid as src_endpoint_uid,\r\n    src_endpoint.ip as src_endpoint_ip,\r\n    src_endpoint.domain as src_endpoint_domain,\r\n\t\r\n    actor.user.type as identity_user_type,\r\n    actor.user.name as identity_user_name,\r\n    actor.user.uid as identity_user_uid,\r\n    actor.user.uuid as identity_user_uuid,\r\n    actor.user.credential_uid as identity_user_credential_uid,\r\n    actor.user.account_uid,\r\n    actor.session.created_time as identity_session_created_time,\r\n    actor.session.mfa as identity_session_mfa,\r\n    actor.session.issuer as identity_session_issuer,\r\n    actor.idp.name as identity_idp,\r\n\t\r\n\tunmapped['eventCategory'] as unmapped_event_category,\r\n    unmapped['responseElement'] as unmapped_response_element,\r\n    unmapped['requestParameters'] as unmapped_request_parameters,\r\n    unmapped['recipientAccountId'] as unmapped_recipient_account_id,\r\n    unmapped['eventType'] as unmapped_event_type,\r\n    unmapped['managementEvent'] as unmapped_management_event,\r\n    unmapped['readOnly'] as unmapped_read_only,\r\n    \r\n    json_extract(unmapped['additionalEventData'], '$.SignatureVersion') as unmapped_additional_signature_version,\r\n    json_extract(unmapped['additionalEventData'], '$.CipherSuite') as unmapped_additional_cipher_suit,\r\n    json_extract(unmapped['additionalEventData'], '$.AuthenticationMethod') as unmapped_additional_auth_method,\r\n    json_extract(unmapped['additionalEventData'], '$.SSEApplied') as unmapped_additional_sse_applied,\r\n    cast(json_extract(unmapped['additionalEventData'], '$.bytesTransferredIn') as double) as unmapped_additional_bytes_tx_in,\r\n    cast(json_extract(unmapped['additionalEventData'], '$.bytesTransferredOut') as double) as unmapped_additional_bytes_tx_out,\r\n    json_extract(unmapped['requestParameters'], '$.bucketName') as unmapped_additional_bucket_name,\r\n    json_extract(unmapped['requestParameters'], '$.Host') as unmapped_additional_host,\r\n    json_extract(unmapped['requestParameters'], '$.key') as unmapped_additional_key,\r\n    json_extract(unmapped['requestParameters'], '$.functionName') as unmapped_additional_function_name,\r\n    json_extract(unmapped['requestParameters'], '$.invocationType') as unmapped_additional_invocation_type,\r\n    json_extract(unmapped['requestParameters'], '$.logType') as unmapped_additional_log_type,\r\n    json_extract(unmapped['requestParameters'], '$.roleArn') as unmapped_additional_role_arn,\r\n    json_extract(unmapped['requestParameters'], '$.roleSessionName') as unmapped_additional_session_name,\r\n    json_extract(unmapped['requestParameters'], '$.durationSeconds') as unmapped_additional_duration_sec,\r\n    json_extract(unmapped['requestParameters'], '$.encryptionAlgorithm') as unmapped_additional_encryption_algorithm,\r\n    json_extract(unmapped['requestParameters'], '$.encryptionContext.aws:lambda:FunctionArn') as unmapped_additional_encryption_context\r\n\r\nFROM amazon_security_lake_glue_db_<aws-security-lake-region>.amazon_security_lake_table_<aws-security-lake-region>_cloud_trail\r\nWHERE api.service.name NOT IN ('s3.amazonaws.com') and eventDay >= cast(date_format(current_timestamp - INTERVAL '1' month, '%Y%m%d%H') as varchar)",
+                        "SqlQuery": "SELECT \r\n    cast(from_unixtime(time/1000) as timestamp) as Date,\r\n    cloud.region,\r\n    http_request.user_agent,\r\n\r\n    api.response.error as api_response_error,\r\n    api.response.message as api_response_message,\r\n    api.operation as api_operation,\r\n    api.request.uid as api_request_uid,\r\n    api.service.name as api_service_name,\r\n    \r\n    src_endpoint.uid as src_endpoint_uid,\r\n    src_endpoint.ip as src_endpoint_ip,\r\n    src_endpoint.domain as src_endpoint_domain,\r\n\t\r\n    actor.user.type as identity_user_type,\r\n    actor.user.name as identity_user_name,\r\n    actor.user.uid as identity_user_uid,\r\n    actor.user.uuid as identity_user_uuid,\r\n    actor.user.credential_uid as identity_user_credential_uid,\r\n    actor.user.account_uid,\r\n    actor.session.created_time as identity_session_created_time,\r\n    actor.session.mfa as identity_session_mfa,\r\n    actor.session.issuer as identity_session_issuer,\r\n    actor.idp.name as identity_idp,\r\n\t\r\n\tunmapped['eventCategory'] as unmapped_event_category,\r\n    unmapped['responseElement'] as unmapped_response_element,\r\n    unmapped['requestParameters'] as unmapped_request_parameters,\r\n    unmapped['recipientAccountId'] as unmapped_recipient_account_id,\r\n    unmapped['eventType'] as unmapped_event_type,\r\n    unmapped['managementEvent'] as unmapped_management_event,\r\n    unmapped['readOnly'] as unmapped_read_only,\r\n    \r\n    json_extract(unmapped['additionalEventData'], '$.SignatureVersion') as unmapped_additional_signature_version,\r\n    json_extract(unmapped['additionalEventData'], '$.CipherSuite') as unmapped_additional_cipher_suit,\r\n    json_extract(unmapped['additionalEventData'], '$.AuthenticationMethod') as unmapped_additional_auth_method,\r\n    json_extract(unmapped['additionalEventData'], '$.SSEApplied') as unmapped_additional_sse_applied,\r\n    cast(json_extract(unmapped['additionalEventData'], '$.bytesTransferredIn') as double) as unmapped_additional_bytes_tx_in,\r\n    cast(json_extract(unmapped['additionalEventData'], '$.bytesTransferredOut') as double) as unmapped_additional_bytes_tx_out,\r\n    json_extract(unmapped['requestParameters'], '$.bucketName') as unmapped_additional_bucket_name,\r\n    json_extract(unmapped['requestParameters'], '$.Host') as unmapped_additional_host,\r\n    json_extract(unmapped['requestParameters'], '$.key') as unmapped_additional_key,\r\n    json_extract(unmapped['requestParameters'], '$.functionName') as unmapped_additional_function_name,\r\n    json_extract(unmapped['requestParameters'], '$.invocationType') as unmapped_additional_invocation_type,\r\n    json_extract(unmapped['requestParameters'], '$.logType') as unmapped_additional_log_type,\r\n    json_extract(unmapped['requestParameters'], '$.roleArn') as unmapped_additional_role_arn,\r\n    json_extract(unmapped['requestParameters'], '$.roleSessionName') as unmapped_additional_session_name,\r\n    json_extract(unmapped['requestParameters'], '$.durationSeconds') as unmapped_additional_duration_sec,\r\n    json_extract(unmapped['requestParameters'], '$.encryptionAlgorithm') as unmapped_additional_encryption_algorithm,\r\n    json_extract(unmapped['requestParameters'], '$.encryptionContext.aws:lambda:FunctionArn') as unmapped_additional_encryption_context\r\n\r\nFROM amazon_security_lake_glue_db_<aws-security-lake-region>.amazon_security_lake_table_<aws-security-lake-region>_cloud_trail_mgmt_1_0\r\nWHERE api.service.name NOT IN ('s3.amazonaws.com') and eventDay >= cast(date_format(current_timestamp - INTERVAL '1' month, '%Y%m%d%H') as varchar)",
                         "Columns": [
                             {
                                 "Name": "Date",
@@ -2076,7 +1900,7 @@
             ],
             "Permissions": [
                 {
-                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-executive-group",
+                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-operator-group",
                     "Actions": [
                         "quicksight:DescribeDataSet",
                         "quicksight:DescribeDataSetPermissions",
@@ -2322,7 +2146,7 @@
             ],
             "Permissions": [
                 {
-                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-executive-group",
+                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-operator-group",
                     "Actions": [
                         "quicksight:DescribeDataSet",
                         "quicksight:DescribeDataSetPermissions",
@@ -2668,7 +2492,7 @@
             ],
             "Permissions": [
                 {
-                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-executive-group",
+                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-operator-group",
                     "Actions": [
                         "quicksight:DescribeDataSet",
                         "quicksight:DescribeDataSetPermissions",
@@ -2689,7 +2513,7 @@
                     "CustomSql": {
                         "DataSourceArn": "arn:aws:quicksight:<aws-region>:<aws-account>:datasource/sl-ag-datasource",
                         "Name": "New custom SQL",
-                        "SqlQuery": "WITH cloud_trail as\r\n    (select\r\n       cast(from_unixtime(time/1000) as timestamp) as Date,\r\n        class_name, activity_name, region, accountid\r\n    FROM amazon_security_lake_glue_db_<aws-security-lake-region>.amazon_security_lake_table_<aws-security-lake-region>_cloud_trail\r\n    WHERE api.service.name NOT IN ('s3.amazonaws.com') and eventDay >= cast(date_format(current_timestamp - INTERVAL '6' month, '%Y%m%d%H') as varchar)\r\n    ),\r\nroute53 as\r\n    (select\r\n        cast(from_unixtime(time/1000) as timestamp) as Date,\r\n        class_name, activity_name, region, accountid\r\n    FROM amazon_security_lake_glue_db_<aws-security-lake-region>.amazon_security_lake_table_us_east_1_route53\r\n    WHERE eventDay >= cast(date_format(current_timestamp - INTERVAL '6' month, '%Y%m%d%H') as varchar)\r\n    ),\r\nsh_findings as\r\n    (select\r\n        cast(from_unixtime(time/1000) as timestamp) as Date,\r\n        class_name, activity_name, region, accountid\r\n    FROM amazon_security_lake_glue_db_<aws-security-lake-region>.amazon_security_lake_table_us_east_1_sh_findings\r\n    WHERE eventDay >= cast(date_format(current_timestamp - INTERVAL '6' month, '%Y%m%d%H') as varchar)\r\n    ),\r\nvpc_flow as\r\n    (select\r\n        cast(from_unixtime(time/1000) as timestamp) as Date,\r\n        class_name, activity_name, region, accountid\r\n    FROM amazon_security_lake_glue_db_<aws-security-lake-region>.amazon_security_lake_table_us_east_1_vpc_flow\r\n    WHERE eventDay >= cast(date_format(current_timestamp - INTERVAL '6' month, '%Y%m%d%H') as varchar)\r\n    )\r\nselect * from cloud_trail\r\nunion all\r\nselect * from route53\r\nunion all\r\nselect * from sh_findings\r\nunion all\r\nselect * from vpc_flow",
+                        "SqlQuery": "WITH cloud_trail as\r\n    (select\r\n       cast(from_unixtime(time/1000) as timestamp) as Date,\r\n        class_name, activity_name, region, accountid\r\n    FROM amazon_security_lake_glue_db_<aws-security-lake-region>.amazon_security_lake_table_<aws-security-lake-region>_cloud_trail_mgmt_1_0\r\n    WHERE api.service.name NOT IN ('s3.amazonaws.com') and eventDay >= cast(date_format(current_timestamp - INTERVAL '6' month, '%Y%m%d%H') as varchar)\r\n    ),\r\nroute53 as\r\n    (select\r\n        cast(from_unixtime(time/1000) as timestamp) as Date,\r\n        class_name, activity_name, region, accountid\r\n    FROM amazon_security_lake_glue_db_<aws-security-lake-region>.amazon_security_lake_table_us_east_1_route53\r\n    WHERE eventDay >= cast(date_format(current_timestamp - INTERVAL '6' month, '%Y%m%d%H') as varchar)\r\n    ),\r\nsh_findings as\r\n    (select\r\n        cast(from_unixtime(time/1000) as timestamp) as Date,\r\n        class_name, activity_name, region, accountid\r\n    FROM amazon_security_lake_glue_db_<aws-security-lake-region>.amazon_security_lake_table_us_east_1_sh_findings\r\n    WHERE eventDay >= cast(date_format(current_timestamp - INTERVAL '6' month, '%Y%m%d%H') as varchar)\r\n    ),\r\nvpc_flow as\r\n    (select\r\n        cast(from_unixtime(time/1000) as timestamp) as Date,\r\n        class_name, activity_name, region, accountid\r\n    FROM amazon_security_lake_glue_db_<aws-security-lake-region>.amazon_security_lake_table_us_east_1_vpc_flow\r\n    WHERE eventDay >= cast(date_format(current_timestamp - INTERVAL '6' month, '%Y%m%d%H') as varchar)\r\n    )\r\nselect * from cloud_trail\r\nunion all\r\nselect * from route53\r\nunion all\r\nselect * from sh_findings\r\nunion all\r\nselect * from vpc_flow",
                         "Columns": [
                             {
                                 "Name": "Date",
@@ -2789,7 +2613,7 @@
             ],
             "Permissions": [
                 {
-                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-executive-group",
+                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-operator-group",
                     "Actions": [
                         "quicksight:DescribeDataSet",
                         "quicksight:DescribeDataSetPermissions",
@@ -2818,7 +2642,7 @@
             },
             "Permissions": [
                 {
-                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-executive-group",
+                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-operator-group",
                     "Actions": [
                         "quicksight:DescribeDataSource",
                         "quicksight:DescribeDataSourcePermissions",
@@ -2843,7 +2667,7 @@
             },
             "Permissions": [
                 {
-                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-executive-group",
+                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-operator-group",
                     "Actions": [
                         "quicksight:DescribeDataSource",
                         "quicksight:DescribeDataSourcePermissions",
@@ -2868,7 +2692,7 @@
             },
             "Permissions": [
                 {
-                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-executive-group",
+                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-operator-group",
                     "Actions": [
                         "quicksight:DescribeDataSource",
                         "quicksight:DescribeDataSourcePermissions",
@@ -2893,7 +2717,7 @@
             },
             "Permissions": [
                 {
-                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-executive-group",
+                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-operator-group",
                     "Actions": [
                         "quicksight:DescribeDataSource",
                         "quicksight:DescribeDataSourcePermissions",
@@ -2918,7 +2742,7 @@
             },
             "Permissions": [
                 {
-                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-executive-group",
+                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-operator-group",
                     "Actions": [
                         "quicksight:DescribeDataSource",
                         "quicksight:DescribeDataSourcePermissions",
@@ -2929,10 +2753,11 @@
         }
     },
     "groups": {
-        "security-lake-executive-group": {
-            "Arn": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-executive-group",
-            "GroupName": "security-lake-executive-group",
-            "PrincipalId": "group/d-9067a6eb92/d2a059a1-f790-4f46-9e1b-a5e34c4d859f"
+        "security-lake-operator-group": {
+            "Arn": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-operator-group",
+            "GroupName": "security-lake-operator-group",
+            "Description": "security-lake-operator-group",
+            "PrincipalId": "group/d-9067a6eb92/f2aba374-9166-4664-bf46-07bfc1e0f5f3"
         }
     }
 }
