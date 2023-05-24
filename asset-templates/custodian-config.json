@@ -1362,7 +1362,7 @@
                     ]
                 },
                 {
-                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:user/default/Admin/adplotzk-Isengard",
+                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-custodian-group",
                     "Actions": [
                         "quicksight:DescribeDashboard",
                         "quicksight:ListDashboardVersions",
@@ -2795,7 +2795,7 @@
             },
             "Permissions": [
                 {
-                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:user/default/Admin/adplotzk-Isengard",
+                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-custodian-group",
                     "Actions": [
                         "quicksight:UpdateDataSourcePermissions",
                         "quicksight:DescribeDataSourcePermissions",
@@ -2825,7 +2825,7 @@
             },
             "Permissions": [
                 {
-                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:user/default/Admin/adplotzk-Isengard",
+                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-custodian-group",
                     "Actions": [
                         "quicksight:UpdateDataSourcePermissions",
                         "quicksight:DescribeDataSourcePermissions",
@@ -2855,7 +2855,7 @@
             },
             "Permissions": [
                 {
-                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:user/default/Admin/adplotzk-Isengard",
+                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-custodian-group",
                     "Actions": [
                         "quicksight:UpdateDataSourcePermissions",
                         "quicksight:DescribeDataSourcePermissions",
@@ -2885,7 +2885,7 @@
             },
             "Permissions": [
                 {
-                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:user/default/Admin/adplotzk-Isengard",
+                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-custodian-group",
                     "Actions": [
                         "quicksight:UpdateDataSourcePermissions",
                         "quicksight:DescribeDataSourcePermissions",
@@ -2915,7 +2915,7 @@
             },
             "Permissions": [
                 {
-                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:user/default/Admin/adplotzk-Isengard",
+                    "Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-custodian-group",
                     "Actions": [
                         "quicksight:UpdateDataSourcePermissions",
                         "quicksight:DescribeDataSourcePermissions",
