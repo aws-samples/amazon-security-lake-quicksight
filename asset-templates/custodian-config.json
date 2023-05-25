@@ -1613,7 +1613,7 @@
 			],
 			"Permissions": [
 				{
-					"Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-executive-group",
+					"Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-custodian-group",
 					"Actions": [
 						"quicksight:DescribeDataSet",
 						"quicksight:DescribeDataSetPermissions",
@@ -2095,7 +2095,7 @@
 			],
 			"Permissions": [
 				{
-					"Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-executive-group",
+					"Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-custodian-group",
 					"Actions": [
 						"quicksight:DescribeDataSet",
 						"quicksight:DescribeDataSetPermissions",
@@ -2342,7 +2342,7 @@
 			],
 			"Permissions": [
 				{
-					"Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-executive-group",
+					"Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-custodian-group",
 					"Actions": [
 						"quicksight:DescribeDataSet",
 						"quicksight:DescribeDataSetPermissions",
@@ -2689,7 +2689,7 @@
 			],
 			"Permissions": [
 				{
-					"Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-executive-group",
+					"Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-custodian-group",
 					"Actions": [
 						"quicksight:DescribeDataSet",
 						"quicksight:DescribeDataSetPermissions",
@@ -2811,7 +2811,7 @@
 			],
 			"Permissions": [
 				{
-					"Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-executive-group",
+					"Principal": "arn:aws:quicksight:<aws-region>:<aws-account>:group/default/security-lake-custodian-group",
 					"Actions": [
 						"quicksight:DescribeDataSet",
 						"quicksight:DescribeDataSetPermissions",
