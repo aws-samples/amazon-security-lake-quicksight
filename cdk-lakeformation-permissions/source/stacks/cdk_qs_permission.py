@@ -13,7 +13,7 @@ class CdkPermissionStack(Stack):
     def __init__(self, scope: Construct, id: str, security_lake_account_id, quicksight_user_arn, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
 
-        tables = ['cloud_trail', 'route53', 'sh_findings', 'vpc_flow']
+        tables = ['cloud_trail_mgmt', 'route53', 'sh_findings', 'vpc_flow']
         permission_list = {
                      "qs_arn":quicksight_user_arn.value_as_string,
                      "operator":f"arn:aws:quicksight:{Stack.of(self).region}:{Stack.of(self).account}:group/default/security-lake-operator-group",
