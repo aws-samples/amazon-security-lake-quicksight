@@ -1,0 +1,1218 @@
+
+                        "Name": "New custom SQL",
+                        "SqlQuery": "SELECT \r\n    cast(from_unixtime(time/1000) as timestamp) as Date,\r\n    cloud.region,\r\n    http_request.user_agent,\r\n\r\n    api.response.error as api_response_error,\r\n    api.response.message as api_response_message,\r\n    api.operation as api_operation,\r\n    api.request.uid as api_request_uid,\r\n    api.service.name as api_service_name,\r\n    \r\n    src_endpoint.uid as src_endpoint_uid,\r\n    src_endpoint.ip as src_endpoint_ip,\r\n    src_endpoint.domain as src_endpoint_domain,\r\n\t\r\n    actor.user.type as identity_user_type,\r\n    actor.user.name as identity_user_name,\r\n    actor.user.uid as identity_user_uid,\r\n    actor.user.uuid as identity_user_uuid,\r\n    actor.user.credential_uid as identity_user_credential_uid,\r\n    actor.user.account_uid,\r\n    actor.session.created_time as identity_session_created_time,\r\n    actor.session.mfa as identity_session_mfa,\r\n    actor.session.issuer as identity_session_issuer,\r\n    actor.idp.name as identity_idp,\r\n\t\r\n\tunmapped['eventCategory'] as unmapped_event_category,\r\n    unmapped['responseElement'] as unmapped_response_element,\r\n    unmapped['requestParameters'] as unmapped_request_parameters,\r\n    unmapped['recipientAccountId'] as unmapped_recipient_account_id,\r\n    unmapped['eventType'] as unmapped_event_type,\r\n    unmapped['managementEvent'] as unmapped_management_event,\r\n    unmapped['readOnly'] as unmapped_read_only,\r\n    \r\n    json_extract(unmapped['additionalEventData'], '$.SignatureVersion') as unmapped_additional_signature_version,\r\n    json_extract(unmapped['additionalEventData'], '$.CipherSuite') as unmapped_additional_cipher_suit,\r\n    json_extract(unmapped['additionalEventData'], '$.AuthenticationMethod') as unmapped_additional_auth_method,\r\n    json_extract(unmapped['additionalEventData'], '$.SSEApplied') as unmapped_additional_sse_applied,\r\n    cast(json_extract(unmapped['additionalEventData'], '$.bytesTransferredIn') as double) as unmapped_additional_bytes_tx_in,\r\n    cast(json_extract(unmapped['additionalEventData'], '$.bytesTransferredOut') as double) as unmapped_additional_bytes_tx_out,\r\n    json_extract(unmapped['requestParameters'], '$.bucketName') as unmapped_additional_bucket_name,\r\n    json_extract(unmapped['requestParameters'], '$.Host') as unmapped_additional_host,\r\n    json_extract(unmapped['requestParameters'], '$.key') as unmapped_additional_key,\r\n    json_extract(unmapped['requestParameters'], '$.functionName') as unmapped_additional_function_name,\r\n    json_extract(unmapped['requestParameters'], '$.invocationType') as unmapped_additional_invocation_type,\r\n    json_extract(unmapped['requestParameters'], '$.logType') as unmapped_additional_log_type,\r\n    json_extract(unmapped['requestParameters'], '$.roleArn') as unmapped_additional_role_arn,\r\n    json_extract(unmapped['requestParameters'], '$.roleSessionName') as unmapped_additional_session_name,\r\n    json_extract(unmapped['requestParameters'], '$.durationSeconds') as unmapped_additional_duration_sec,\r\n    json_extract(unmapped['requestParameters'], '$.encryptionAlgorithm') as unmapped_additional_encryption_algorithm,\r\n    json_extract(unmapped['requestParameters'], '$.encryptionContext.aws:lambda:FunctionArn') as unmapped_additional_encryption_context\r\n\r\nFROM amazon_security_lake_glue_db_<aws-security-lake-region>.amazon_security_lake_table_<aws-security-lake-region>_cloud_trail_mgmt_1_0\r\nWHERE  eventDay >= cast(date_format(current_timestamp - INTERVAL '1' month, '%Y%m%d%H') as varchar)",
+                        "Columns": [
+                            {
+                                "Name": "Date",
+                                "Type": "DATETIME"
+                            },
+                            {
+                                "Name": "region",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "user_agent",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "api_response_error",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "api_response_message",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "api_operation",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "api_request_uid",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "api_service_name",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "src_endpoint_uid",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "src_endpoint_ip",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "src_endpoint_domain",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "identity_user_type",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "identity_user_name",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "identity_user_uid",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "identity_user_uuid",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "identity_user_credential_uid",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "account_uid",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "identity_session_created_time",
+                                "Type": "INTEGER"
+                            },
+                            {
+                                "Name": "identity_session_mfa",
+                                "Type": "BOOLEAN"
+                            },
+                            {
+                                "Name": "identity_session_issuer",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "identity_idp",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "unmapped_event_category",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "unmapped_response_element",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "unmapped_request_parameters",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "unmapped_recipient_account_id",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "unmapped_event_type",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "unmapped_management_event",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "unmapped_read_only",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "unmapped_additional_signature_version",
+                                "Type": "JSON"
+                            },
+                            {
+                                "Name": "unmapped_additional_cipher_suit",
+                                "Type": "JSON"
+                            },
+                            {
+                                "Name": "unmapped_additional_auth_method",
+                                "Type": "JSON"
+                            },
+                            {
+                                "Name": "unmapped_additional_sse_applied",
+                                "Type": "JSON"
+                            },
+                            {
+                                "Name": "unmapped_additional_bytes_tx_in",
+                                "Type": "DECIMAL"
+                            },
+                            {
+                                "Name": "unmapped_additional_bytes_tx_out",
+                                "Type": "DECIMAL"
+                            },
+                            {
+                                "Name": "unmapped_additional_bucket_name",
+                                "Type": "JSON"
+                            },
+                            {
+                                "Name": "unmapped_additional_host",
+                                "Type": "JSON"
+                            },
+                            {
+                                "Name": "unmapped_additional_key",
+                                "Type": "JSON"
+                            },
+                            {
+                                "Name": "unmapped_additional_function_name",
+                                "Type": "JSON"
+                            },
+                            {
+                                "Name": "unmapped_additional_invocation_type",
+                                "Type": "JSON"
+                            },
+                            {
+                                "Name": "unmapped_additional_log_type",
+                                "Type": "JSON"
+                            },
+                            {
+                                "Name": "unmapped_additional_role_arn",
+                                "Type": "JSON"
+                            },
+                            {
+                                "Name": "unmapped_additional_session_name",
+                                "Type": "JSON"
+                            },
+                            {
+                                "Name": "unmapped_additional_duration_sec",
+                                "Type": "JSON"
+                            },
+                            {
+                                "Name": "unmapped_additional_encryption_algorithm",
+                                "Type": "JSON"
+                            },
+                            {
+                                "Name": "unmapped_additional_encryption_context",
+                                "Type": "JSON"
+                            }
+                        ]
+                    }
+                }
+            },
+            "LogicalTableMap": {
+                "9a10b0b4-f6d8-4285-9247-b8a3a6ba3490": {
+                    "Alias": "New custom SQL",
+                    "DataTransforms": [
+                        {
+                            "TagColumnOperation": {
+                                "ColumnName": "region",
+                                "Tags": [
+                                    {
+                                        "ColumnGeographicRole": "STATE"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "ProjectOperation": {
+                                "ProjectedColumns": [
+                                    "Date",
+                                    "region",
+                                    "user_agent",
+                                    "api_response_error",
+                                    "api_response_message",
+                                    "api_operation",
+                                    "api_request_uid",
+                                    "api_service_name",
+                                    "src_endpoint_uid",
+                                    "src_endpoint_ip",
+                                    "src_endpoint_domain",
+                                    "identity_user_type",
+                                    "identity_user_name",
+                                    "identity_user_uid",
+                                    "identity_user_uuid",
+                                    "identity_user_credential_uid",
+                                    "account_uid",
+                                    "identity_session_created_time",
+                                    "identity_session_mfa",
+                                    "identity_session_issuer",
+                                    "identity_idp",
+                                    "unmapped_event_category",
+                                    "unmapped_response_element",
+                                    "unmapped_request_parameters",
+                                    "unmapped_recipient_account_id",
+                                    "unmapped_event_type",
+                                    "unmapped_management_event",
+                                    "unmapped_read_only",
+                                    "unmapped_additional_signature_version",
+                                    "unmapped_additional_cipher_suit",
+                                    "unmapped_additional_auth_method",
+                                    "unmapped_additional_sse_applied",
+                                    "unmapped_additional_bytes_tx_in",
+                                    "unmapped_additional_bytes_tx_out",
+                                    "unmapped_additional_bucket_name",
+                                    "unmapped_additional_host",
+                                    "unmapped_additional_key",
+                                    "unmapped_additional_function_name",
+                                    "unmapped_additional_invocation_type",
+                                    "unmapped_additional_log_type",
+                                    "unmapped_additional_role_arn",
+                                    "unmapped_additional_session_name",
+                                    "unmapped_additional_duration_sec",
+                                    "unmapped_additional_encryption_algorithm",
+                                    "unmapped_additional_encryption_context"
+                                ]
+                            }
+                        }
+                    ],
+                    "Source": {
+                        "PhysicalTableId": "38dcdd2c-a830-4ca0-be5b-d318dd809351"
+                    }
+                }
+            },
+            "OutputColumns": [
+                {
+                    "Name": "Date",
+                    "Type": "DATETIME"
+                },
+                {
+                    "Name": "region",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "user_agent",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "api_response_error",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "api_response_message",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "api_operation",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "api_request_uid",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "api_service_name",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "src_endpoint_uid",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "src_endpoint_ip",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "src_endpoint_domain",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "identity_user_type",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "identity_user_name",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "identity_user_uid",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "identity_user_uuid",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "identity_user_credential_uid",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "account_uid",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "identity_session_created_time",
+                    "Type": "INTEGER"
+                },
+                {
+                    "Name": "identity_session_mfa",
+                    "Type": "INTEGER"
+                },
+                {
+                    "Name": "identity_session_issuer",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "identity_idp",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "unmapped_event_category",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "unmapped_response_element",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "unmapped_request_parameters",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "unmapped_recipient_account_id",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "unmapped_event_type",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "unmapped_management_event",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "unmapped_read_only",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "unmapped_additional_signature_version",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "unmapped_additional_cipher_suit",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "unmapped_additional_auth_method",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "unmapped_additional_sse_applied",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "unmapped_additional_bytes_tx_in",
+                    "Type": "DECIMAL"
+                },
+                {
+                    "Name": "unmapped_additional_bytes_tx_out",
+                    "Type": "DECIMAL"
+                },
+                {
+                    "Name": "unmapped_additional_bucket_name",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "unmapped_additional_host",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "unmapped_additional_key",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "unmapped_additional_function_name",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "unmapped_additional_invocation_type",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "unmapped_additional_log_type",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "unmapped_additional_role_arn",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "unmapped_additional_session_name",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "unmapped_additional_duration_sec",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "unmapped_additional_encryption_algorithm",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "unmapped_additional_encryption_context",
+                    "Type": "STRING"
+                }
+            ],
+            "ImportMode": "SPICE",
+            "ConsumedSpiceCapacityInBytes": 0,
+            "FieldFolders": {},
+            "DataSetUsageConfiguration": {
+                "DisableUseAsDirectQuerySource": false,
+                "DisableUseAsImportedSource": false
+            },
+            "RefreshSchedules": [
+                {
+                    "ScheduleId": "42118707-6b79-43d5-904c-5d3f7a40231a",
+                    "ScheduleFrequency": {
+                        "Interval": "DAILY",
+                        "Timezone": "America/New_York",
+                        "TimeOfTheDay": "23:59"
+                    },
+                    "StartAfterDateTime": "2023-04-21T15:58:51-04:00",
+                    "RefreshType": "FULL_REFRESH"
+                }
+            ]
+        },
+        "sh-findings-dataset": {
+            "Arn": "arn:aws:quicksight:<aws-region>:<aws-account>:dataset/sh-findings-dataset",
+            "DataSetId": "sh-findings-dataset",
+            "Name": "sh-findings-data",
+            "LastUpdatedTime": "2023-05-09T00:00:25.280000-04:00",
+            "PhysicalTableMap": {
+                "dff4c744-722d-470d-a7b2-3d10ac26d7a6": {
+                    "CustomSql": {
+                        "DataSourceArn": "arn:aws:quicksight:<aws-region>:<aws-account>:datasource/sh-findings-datasource",
+                        "Name": "New custom SQL",
+                        "SqlQuery": "SELECT  \r\n    cast(from_unixtime(time/1000) as timestamp) as Date,\r\n    state,\r\n    region,\r\n    accountid,\r\n    confidence,\r\n    finding.created_time,\r\n    finding.uid,\r\n    finding.desc,\r\n    finding.title,\r\n    finding.modified_time,\r\n    finding.last_seen_time,\r\n    finding.related_events,\r\n    finding.types,\r\n    finding.remediation.kb_articles,\r\n    finding.src_url,\r\n    compliance.status,\r\n    compliance.requirements,\r\n    compliance.status_detail,\r\n    malware,\r\n    vulnerabilities,\r\n    unmapped['Severity_Normalized'] as Severity_Normalized,\r\n    unmapped['Severity_Original'] as Severity_Original,\r\n    unmapped['CompanyName'] as CompanyName,\r\n    unmapped['Severity'] as Severity,\r\n    unmapped['RecordState'] as RecordState,\r\n    unmapped['Severity_Product'] as Severity_Product\r\n    FROM \"amazon_security_lake_glue_db_<aws-security-lake-region>\".\"amazon_security_lake_table_<aws-security-lake-region>_sh_findings_1_0\"\r\n    WHERE eventDay >= cast(date_format(current_timestamp - INTERVAL '6' month, '%Y%m%d%H') as varchar)",
+                        "Columns": [
+                            {
+                                "Name": "Date",
+                                "Type": "DATETIME"
+                            },
+                            {
+                                "Name": "state",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "region",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "accountid",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "confidence",
+                                "Type": "INTEGER"
+                            },
+                            {
+                                "Name": "created_time",
+                                "Type": "INTEGER"
+                            },
+                            {
+                                "Name": "uid",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "desc",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "title",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "modified_time",
+                                "Type": "INTEGER"
+                            },
+                            {
+                                "Name": "last_seen_time",
+                                "Type": "INTEGER"
+                            },
+                            {
+                                "Name": "src_url",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "status",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "status_detail",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "Severity_Normalized",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "Severity_Original",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "CompanyName",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "Severity",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "RecordState",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "Severity_Product",
+                                "Type": "STRING"
+                            }
+                        ]
+                    }
+                }
+            },
+            "LogicalTableMap": {
+                "6ab7340b-ead7-4155-a74b-3d7bdb12914f": {
+                    "Alias": "New custom SQL",
+                    "DataTransforms": [
+                        {
+                            "ProjectOperation": {
+                                "ProjectedColumns": [
+                                    "Date",
+                                    "state",
+                                    "region",
+                                    "accountid",
+                                    "confidence",
+                                    "created_time",
+                                    "uid",
+                                    "desc",
+                                    "title",
+                                    "modified_time",
+                                    "last_seen_time",
+                                    "src_url",
+                                    "status",
+                                    "status_detail",
+                                    "Severity_Normalized",
+                                    "Severity_Original",
+                                    "CompanyName",
+                                    "Severity",
+                                    "RecordState",
+                                    "Severity_Product"
+                                ]
+                            }
+                        }
+                    ],
+                    "Source": {
+                        "PhysicalTableId": "dff4c744-722d-470d-a7b2-3d10ac26d7a6"
+                    }
+                }
+            },
+            "OutputColumns": [
+                {
+                    "Name": "Date",
+                    "Type": "DATETIME"
+                },
+                {
+                    "Name": "state",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "region",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "accountid",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "confidence",
+                    "Type": "INTEGER"
+                },
+                {
+                    "Name": "created_time",
+                    "Type": "INTEGER"
+                },
+                {
+                    "Name": "uid",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "desc",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "title",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "modified_time",
+                    "Type": "INTEGER"
+                },
+                {
+                    "Name": "last_seen_time",
+                    "Type": "INTEGER"
+                },
+                {
+                    "Name": "src_url",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "status",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "status_detail",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "Severity_Normalized",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "Severity_Original",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "CompanyName",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "Severity",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "RecordState",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "Severity_Product",
+                    "Type": "STRING"
+                }
+            ],
+            "ImportMode": "SPICE",
+            "ConsumedSpiceCapacityInBytes": 4595308,
+            "FieldFolders": {},
+            "DataSetUsageConfiguration": {
+                "DisableUseAsDirectQuerySource": false,
+                "DisableUseAsImportedSource": false
+            },
+            "RefreshSchedules": [
+                {
+                    "ScheduleId": "412892ed-752a-447e-8fb0-62c1ae129b05",
+                    "ScheduleFrequency": {
+                        "Interval": "DAILY",
+                        "Timezone": "America/New_York",
+                        "TimeOfTheDay": "23:59"
+                    },
+                    "StartAfterDateTime": "2023-04-21T15:58:54-04:00",
+                    "RefreshType": "FULL_REFRESH"
+                }
+            ]
+        },
+        "r53-dataset": {
+            "Arn": "arn:aws:quicksight:<aws-region>:<aws-account>:dataset/r53-dataset",
+            "DataSetId": "r53-dataset",
+            "Name": "route-53-data",
+            "LastUpdatedTime": "2023-05-09T00:01:16.411000-04:00",
+            "PhysicalTableMap": {
+                "19e59f5a-6a08-45d6-a852-d89ee6b3a349": {
+                    "CustomSql": {
+                        "DataSourceArn": "arn:aws:quicksight:<aws-region>:<aws-account>:datasource/r53-datasource",
+                        "Name": "New custom SQL",
+                        "SqlQuery": "with d as (\r\n    select \r\n        uuid() as recordId,\r\n        cast(from_unixtime(time/1000) as timestamp) as Date,\r\n        metadata.product.name as product,\r\n        metadata.product.feature.name as feature,\r\n        cloud.account_uid as accountId,\r\n        cloud.region as region,\r\n        cloud.provider as provider,\r\n        src_endpoint.vpc_uid as srcVpc,\r\n        src_endpoint.ip as srcIp,\r\n        cast(src_endpoint.port AS varchar) as src_endpoint_port,\r\n        src_endpoint.instance_uid as srcInstance,\r\n        dst_endpoint.instance_uid as dstInstance,\r\n        dst_endpoint.interface_uid as dstInterface,\r\n        connection_info.protocol_name as protocolName,\r\n        connection_info.direction as protocolDirection,\r\n        connection_info.direction_id as protocolDirectionId,\r\n        class_name as className,\r\n        category_name as categoryName,\r\n        severity,\r\n        activity_name as activityName,\r\n        type_name as typeName,\r\n        rcode as rCode, \r\n        query.hostname as queryHostname,\r\n        query.type as queryType,\r\n        query.class as queryClass,\r\n        cardinality(answers) as answersCount,\r\n        case when cardinality(answers) = 0 then ARRAY[null] else answers end answers\r\n    FROM amazon_security_lake_glue_db_<aws-security-lake-region>.amazon_security_lake_table_<aws-security-lake-region>_route53_1_0 as r53\r\n    WHERE eventDay >= cast(date_format(current_timestamp - INTERVAL '6' month, '%Y%m%d%H') as varchar)\r\n) select\r\n    *, \r\n    case when answer is null then null else answer.type end as rType, \r\n    case when answer is null then null else answer.class end as rClass,\r\n    case when answer is null then null else answer.rData end as rData\r\nfrom d, unnest(answers) as t(answer)",
+                        "Columns": [
+                            {
+                                "Name": "recordId",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "Date",
+                                "Type": "DATETIME"
+                            },
+                            {
+                                "Name": "product",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "feature",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "accountId",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "region",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "provider",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "srcVpc",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "srcIp",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "src_endpoint_port",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "srcInstance",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "dstInstance",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "dstInterface",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "protocolName",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "protocolDirection",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "protocolDirectionId",
+                                "Type": "INTEGER"
+                            },
+                            {
+                                "Name": "className",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "categoryName",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "severity",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "activityName",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "typeName",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "rCode",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "queryHostname",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "queryType",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "queryClass",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "answersCount",
+                                "Type": "INTEGER"
+                            },
+                            {
+                                "Name": "answer",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "rType",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "rClass",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "rData",
+                                "Type": "STRING"
+                            }
+                        ]
+                    }
+                }
+            },
+            "LogicalTableMap": {
+                "0ddebb26-5cb8-4a96-ad8d-1f833d297908": {
+                    "Alias": "New custom SQL",
+                    "DataTransforms": [
+                        {
+                            "TagColumnOperation": {
+                                "ColumnName": "region",
+                                "Tags": [
+                                    {
+                                        "ColumnGeographicRole": "STATE"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "ProjectOperation": {
+                                "ProjectedColumns": [
+                                    "recordId",
+                                    "Date",
+                                    "product",
+                                    "feature",
+                                    "accountId",
+                                    "region",
+                                    "provider",
+                                    "srcVpc",
+                                    "srcIp",
+                                    "src_endpoint_port",
+                                    "srcInstance",
+                                    "dstInstance",
+                                    "dstInterface",
+                                    "protocolName",
+                                    "protocolDirection",
+                                    "protocolDirectionId",
+                                    "className",
+                                    "categoryName",
+                                    "severity",
+                                    "activityName",
+                                    "typeName",
+                                    "rCode",
+                                    "queryHostname",
+                                    "queryType",
+                                    "queryClass",
+                                    "answersCount",
+                                    "answer",
+                                    "rType",
+                                    "rClass",
+                                    "rData"
+                                ]
+                            }
+                        }
+                    ],
+                    "Source": {
+                        "PhysicalTableId": "19e59f5a-6a08-45d6-a852-d89ee6b3a349"
+                    }
+                }
+            },
+            "OutputColumns": [
+                {
+                    "Name": "recordId",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "Date",
+                    "Type": "DATETIME"
+                },
+                {
+                    "Name": "product",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "feature",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "accountId",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "region",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "provider",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "srcVpc",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "srcIp",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "src_endpoint_port",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "srcInstance",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "dstInstance",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "dstInterface",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "protocolName",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "protocolDirection",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "protocolDirectionId",
+                    "Type": "INTEGER"
+                },
+                {
+                    "Name": "className",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "categoryName",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "severity",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "activityName",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "typeName",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "rCode",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "queryHostname",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "queryType",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "queryClass",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "answersCount",
+                    "Type": "INTEGER"
+                },
+                {
+                    "Name": "answer",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "rType",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "rClass",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "rData",
+                    "Type": "STRING"
+                }
+            ],
+            "ImportMode": "SPICE",
+            "ConsumedSpiceCapacityInBytes": 642279,
+            "FieldFolders": {},
+            "DataSetUsageConfiguration": {
+                "DisableUseAsDirectQuerySource": false,
+                "DisableUseAsImportedSource": false
+            },
+            "RefreshSchedules": [
+                {
+                    "ScheduleId": "fbb9fe52-a3a7-43a8-920b-82acdd8833c6",
+                    "ScheduleFrequency": {
+                        "Interval": "DAILY",
+                        "Timezone": "America/New_York",
+                        "TimeOfTheDay": "23:59"
+                    },
+                    "StartAfterDateTime": "2023-04-21T15:58:56-04:00",
+                    "RefreshType": "FULL_REFRESH"
+                }
+            ]
+        },
+        "sl-ag-dataset": {
+            "Arn": "arn:aws:quicksight:<aws-region>:<aws-account>:dataset/sl-ag-dataset",
+            "DataSetId": "sl-ag-dataset",
+            "Name": "sl-ag-production",
+            "LastUpdatedTime": "2023-05-09T00:21:39.461000-04:00",
+            "PhysicalTableMap": {
+                "f847f94d-2919-41a3-9857-f611cbbabcb4": {
+                    "CustomSql": {
+                        "DataSourceArn": "arn:aws:quicksight:<aws-region>:<aws-account>:datasource/sl-ag-datasource",
+                        "Name": "New custom SQL",
+                        "SqlQuery": "WITH cloud_trail as\r\n    (select\r\n       cast(from_unixtime(time/1000) as timestamp) as Date,\r\n        class_name, activity_name, region, accountid\r\n    FROM amazon_security_lake_glue_db_<aws-security-lake-region>.amazon_security_lake_table_<aws-security-lake-region>_cloud_trail_mgmt_1_0\r\n    WHERE  eventDay >= cast(date_format(current_timestamp - INTERVAL '6' month, '%Y%m%d%H') as varchar)\r\n    ),\r\nroute53 as\r\n    (select\r\n        cast(from_unixtime(time/1000) as timestamp) as Date,\r\n        class_name, activity_name, region, accountid\r\n    FROM amazon_security_lake_glue_db_<aws-security-lake-region>.amazon_security_lake_table_<aws-security-lake-region>_route53_1_0\r\n    WHERE eventDay >= cast(date_format(current_timestamp - INTERVAL '6' month, '%Y%m%d%H') as varchar)\r\n    ),\r\nsh_findings as\r\n    (select\r\n        cast(from_unixtime(time/1000) as timestamp) as Date,\r\n        class_name, activity_name, region, accountid\r\n    FROM amazon_security_lake_glue_db_<aws-security-lake-region>.amazon_security_lake_table_<aws-security-lake-region>_sh_findings_1_0\r\n    WHERE eventDay >= cast(date_format(current_timestamp - INTERVAL '6' month, '%Y%m%d%H') as varchar)\r\n    ),\r\nvpc_flow as\r\n    (select\r\n        cast(from_unixtime(time/1000) as timestamp) as Date,\r\n        class_name, activity_name, region, accountid\r\n    FROM amazon_security_lake_glue_db_<aws-security-lake-region>.amazon_security_lake_table_<aws-security-lake-region>_vpc_flow_1_0\r\n    WHERE eventDay >= cast(date_format(current_timestamp - INTERVAL '6' month, '%Y%m%d%H') as varchar)\r\n    )\r\nselect * from cloud_trail\r\nunion all\r\nselect * from route53\r\nunion all\r\nselect * from sh_findings\r\nunion all\r\nselect * from vpc_flow",
+                        "Columns": [
+                            {
+                                "Name": "Date",
+                                "Type": "DATETIME"
+                            },
+                            {
+                                "Name": "class_name",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "activity_name",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "region",
+                                "Type": "STRING"
+                            },
+                            {
+                                "Name": "accountid",
+                                "Type": "STRING"
+                            }
+                        ]
+                    }
+                }
+            },
+            "LogicalTableMap": {
+                "d4c839f4-b487-41ec-bbe7-0b1873d3c22c": {
+                    "Alias": "New custom SQL",
+                    "DataTransforms": [
+                        {
+                            "TagColumnOperation": {
+                                "ColumnName": "region",
+                                "Tags": [
+                                    {
+                                        "ColumnGeographicRole": "STATE"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "ProjectOperation": {
+                                "ProjectedColumns": [
+                                    "Date",
+                                    "class_name",
+                                    "activity_name",
+                                    "region",
+                                    "accountid"
+                                ]
+                            }
+                        }
+                    ],
+                    "Source": {
+                        "PhysicalTableId": "f847f94d-2919-41a3-9857-f611cbbabcb4"
+                    }
+                }
+            },
+            "OutputColumns": [
+                {
+                    "Name": "Date",
+                    "Type": "DATETIME"
+                },
+                {
+                    "Name": "class_name",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "activity_name",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "region",
+                    "Type": "STRING"
+                },
+                {
+                    "Name": "accountid",
+                    "Type": "STRING"
+                }
+            ],
+            "ImportMode": "SPICE",
+            "ConsumedSpiceCapacityInBytes": 55486177,
+            "FieldFolders": {},
+            "DataSetUsageConfiguration": {
+                "DisableUseAsDirectQuerySource": false,
+                "DisableUseAsImportedSource": false
+            },
+            "RefreshSchedules": [
+                {
+                    "ScheduleId": "44ce0eab-79f8-4b57-9a22-68daef8b49bc",
+                    "ScheduleFrequency": {
+                        "Interval": "DAILY",
+                        "Timezone": "America/New_York",
+                        "TimeOfTheDay": "23:59"
+                    },
+                    "StartAfterDateTime": "2023-04-21T15:58:58-04:00",
+                    "RefreshType": "FULL_REFRESH"
+                }
+            ]
+        }
+    },
+    "datasources": {
+        "vpc-flow-datasource": {
+            "Arn": "arn:aws:quicksight:<aws-region>:<aws-account>:datasource/vpc-flow-datasource",
+            "DataSourceId": "vpc-flow-datasource",
+            "Name": "amazon_security_lake_glue_db_<aws-security-lake-region>",
+            "Type": "ATHENA",
+            "LastUpdatedTime": "2023-04-21T15:58:43.524000-04:00",
+            "DataSourceParameters": {
+                "AthenaParameters": {
+                    "WorkGroup": "primary"
+                }
+            },
+            "SslProperties": {
+                "DisableSsl": false
+            }
+        },
+        "cloudtrail-datasource": {
+            "Arn": "arn:aws:quicksight:<aws-region>:<aws-account>:datasource/cloudtrail-datasource",
+            "DataSourceId": "cloudtrail-datasource",
+            "Name": "amazon_security_lake_glue_db_<aws-security-lake-region>",
+            "Type": "ATHENA",
+            "LastUpdatedTime": "2023-04-21T15:58:43.523000-04:00",
+            "DataSourceParameters": {
+                "AthenaParameters": {
+                    "WorkGroup": "primary"
+                }
+            },
+            "SslProperties": {
+                "DisableSsl": false
+            }
+        },
+        "sh-findings-datasource": {
+            "Arn": "arn:aws:quicksight:<aws-region>:<aws-account>:datasource/sh-findings-datasource",
+            "DataSourceId": "sh-findings-datasource",
+            "Name": "amazon_security_lake_glue_db_<aws-security-lake-region>",
+            "Type": "ATHENA",
+            "LastUpdatedTime": "2023-04-21T15:58:43.954000-04:00",
+            "DataSourceParameters": {
+                "AthenaParameters": {
+                    "WorkGroup": "primary"
+                }
+            },
+            "SslProperties": {
+                "DisableSsl": false
+            }
+        },
+        "r53-datasource": {
+            "Arn": "arn:aws:quicksight:<aws-region>:<aws-account>:datasource/r53-datasource",
+            "DataSourceId": "r53-datasource",
+            "Name": "amazon_security_lake_glue_db_<aws-security-lake-region>",
+            "Type": "ATHENA",
+            "LastUpdatedTime": "2023-04-21T15:58:49.068000-04:00",
+            "DataSourceParameters": {
+                "AthenaParameters": {
+                    "WorkGroup": "primary"
+                }
+            },
+            "SslProperties": {
+                "DisableSsl": false
+            }
+        },
+        "sl-ag-datasource": {
+            "Arn": "arn:aws:quicksight:<aws-region>:<aws-account>:datasource/sl-ag-datasource",
+            "DataSourceId": "sl-ag-datasource",
+            "Name": "amazon_security_lake_glue_db_<aws-security-lake-region>",
+            "Type": "ATHENA",
+            "LastUpdatedTime": "2023-04-21T15:58:44.614000-04:00",
+            "DataSourceParameters": {
+                "AthenaParameters": {
+                    "WorkGroup": "primary"
+                }
+            },
+            "SslProperties": {
+                "DisableSsl": false
+            }
+        }
+    },
+    "groups": {}
+}
