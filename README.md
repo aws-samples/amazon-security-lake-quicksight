@@ -2,8 +2,8 @@
 1. [About this Repo](#About)
 2. [Usage Guide](#Usage)
 3. [Examples](#Examples)
-4. [Cost & Performance](#Cost & Performance)
-5. [Dashboard Customization](#Dashboard Customization)
+4. [Cost & Performance](#Cost&Performance)
+5. [Dashboard Customization](#DashboardCustomization)
 6. [License](#License)
 
 ## About this Repo <a name="About"></a>
