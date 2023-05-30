@@ -27,13 +27,13 @@ We welcome contributions to this repo in the form of fixes to existing examples 
 
 Edit cdk-lakeformation-permissions/source/cdk.json using the values for your specific Amazon Security Lake and Amazon Quicksight Instance:
 
-1. rollup_region - 
-2. region - 
-3. slregion - 
-4. LakeFormationAdminRoleArn - 
-5. SecurityLakeAccountID - 
-6. AWSAccountID - 
-7. QuicksightUserARN - 
+1. rollup_region - The aggregate region used for rollup in Amazon Security Lake. 
+2. region - The current region where this solution is being deployed to.
+3. slregion - The region where the referenced Security Lake tables reside. 
+4. LakeFormationAdminRoleArn - The Admin Role ARN used in AWS Lake Formation.
+5. SecurityLakeAccountID - The AWS Account ID which has provided the resource share to its security lake assets.
+6. AWSAccountID - The AWS Account ID in which this solution is being deployed to.
+7. QuicksightUserARN - The AWS Quicksight ARN of the Quicksight account in which this solution is being deployed to.
 
 
 		{
@@ -125,6 +125,10 @@ Run
 ![Solution Overview](/imagescustodian.png)
 
 ![Solution Overview](/images/executive.png)
+
+## Cost & Performance <a name="Cost&Performance"></a>
+## Dashboard Customization <a name="#DashboardCustomization"></a>
+
 
 ### Official Resources
 - [Amazon Security Lake Overview](https://aws.amazon.com/security-lake/)
