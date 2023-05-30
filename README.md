@@ -2,7 +2,9 @@
 1. [About this Repo](#About)
 2. [Usage Guide](#Usage)
 3. [Examples](#Examples)
-4. [License](#License)
+4. [Cost & Performance](#Cost&Performance)
+5. [Dashboard Customization](#DashboardCustomization)
+6. [License](#License)
 
 ## About this Repo <a name="About"></a>
 
@@ -25,13 +27,13 @@ We welcome contributions to this repo in the form of fixes to existing examples 
 
 Edit cdk-lakeformation-permissions/source/cdk.json using the values for your specific Amazon Security Lake and Amazon Quicksight Instance:
 
-1. rollup_region - 
-2. region - 
-3. slregion - 
-4. LakeFormationAdminRoleArn - 
-5. SecurityLakeAccountID - 
-6. AWSAccountID - 
-7. QuicksightUserARN - 
+1. rollup_region - The aggregate region used for rollup in Amazon Security Lake. This field require the use of an underscore rather than dash (example: us_east_1 rather than us-east-1).
+2. region - The current region where this solution is being deployed to.
+3. slregion - The region where the referenced Security Lake tables reside. 
+4. LakeFormationAdminRoleArn - The Admin Role ARN used in AWS Lake Formation.
+5. SecurityLakeAccountID - The AWS Account ID which has provided the resource share to its security lake assets.
+6. AWSAccountID - The AWS Account ID in which this solution is being deployed to.
+7. QuicksightUserARN - The AWS Quicksight ARN of the Quicksight account in which this solution is being deployed to.
 
 
 		{
@@ -88,17 +90,6 @@ $ qsdeploy.sh
 ```
 
 ## Examples <a name="Examples"></a>
-
-Edit cdk-lakeformation-permissions/source/cdk.json using the values for your specific Amazon Security Lake and Amazon Quicksight Instance:
-
-1. rollup_region - 
-2. region - 
-3. slregion - 
-4. LakeFormationAdminRoleArn - 
-5. SecurityLakeAccountID - 
-6. AWSAccountID - 
-7. QuicksightUserARN - 
-	
 	
 		{
 		  "app": "python3 app.py",
@@ -120,9 +111,17 @@ Run
 	
 ![Solution Overview](/images/analyst.png)
 
-![Solution Overview](/imagescustodian.png)
+![Solution Overview](/images/custodian.png)
 
 ![Solution Overview](/images/executive.png)
+
+## Quicksight Cost <a name="Cost&Performance"></a>
+
+Please refer to the following on Amazon Quicksight cost: https://aws.amazon.com/quicksight/pricing/.
+
+## Dashboard Customization <a name="#DashboardCustomization"></a>
+
+This solution has been deisnged as a generally available solution for users who wish to visualize their Amazon Security Lake data. For users with specific visualization needs, the quicksight analysis has been provided in addition to the dashboards. In Amazon QuickSight, an analysis is the same thing as a dashboard, except that it can only be accessed by the authors you choose. You can keep it private, and  When and if you decide to publish it, the it can be edited to add or remove visuals before being shared as a new dashboard.For more information on how to customize the analysis provided by this solution, please refer to the following: https://docs.aws.amazon.com/quicksight/latest/user/working-with-an-analysis.html.
 
 ### Official Resources
 - [Amazon Security Lake Overview](https://aws.amazon.com/security-lake/)
