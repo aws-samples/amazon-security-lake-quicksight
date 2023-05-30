@@ -126,9 +126,13 @@ Run
 
 ![Solution Overview](/images/executive.png)
 
-## Cost & Performance <a name="Cost&Performance"></a>
+## Quicksight Cost <a name="Cost&Performance"></a>
+
+Please refer to the following on Amazon Quicksight cost: https://aws.amazon.com/quicksight/pricing/.
+
 ## Dashboard Customization <a name="#DashboardCustomization"></a>
 
+This solution has been deisnged as a generally available solution for users who wish to visualize their Amazon Security Lake data. For users with specific visualization needs, the quicksight analysis has been provided in addition to the dashboards. In Amazon QuickSight, an analysis is the same thing as a dashboard, except that it can only be accessed by the authors you choose. You can keep it private, and  When and if you decide to publish it, the it can be edited to add or remove visuals before being shared as a new dashboard.For more information on how to customize the analysis provided by this solution, please refer to the following: https://docs.aws.amazon.com/quicksight/latest/user/working-with-an-analysis.html.
 
 ### Official Resources
 - [Amazon Security Lake Overview](https://aws.amazon.com/security-lake/)
