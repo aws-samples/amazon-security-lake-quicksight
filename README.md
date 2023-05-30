@@ -27,8 +27,7 @@ We welcome contributions to this repo in the form of fixes to existing examples 
 
 Edit cdk-lakeformation-permissions/source/cdk.json using the values for your specific Amazon Security Lake and Amazon Quicksight Instance:
 
-1. rollup_region - The aggregate region used for rollup in Amazon Security Lake. 
-	NOTE: underscore rather than dash (example: us_east_1 rather than us-east-1).
+1. rollup_region - The aggregate region used for rollup in Amazon Security Lake. This field require the use of an underscore rather than dash (example: us_east_1 rather than us-east-1).
 2. region - The current region where this solution is being deployed to.
 3. slregion - The region where the referenced Security Lake tables reside. 
 4. LakeFormationAdminRoleArn - The Admin Role ARN used in AWS Lake Formation.
