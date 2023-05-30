@@ -122,7 +122,7 @@ Run
 	
 ![Solution Overview](/images/analyst.png)
 
-![Solution Overview](/imagescustodian.png)
+![Solution Overview](/images/custodian.png)
 
 ![Solution Overview](/images/executive.png)
 
