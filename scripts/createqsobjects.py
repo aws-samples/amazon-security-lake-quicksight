@@ -37,10 +37,10 @@ def main(aws_region, aws_account_id, aws_principal_id):
     files = os.listdir(TEMPLATES_DIR)
     
     # Fetching all the files to directory
-    # for file_name in files:
-    #    shutil.copy(TEMPLATES_DIR+file_name, STAGING_DIR+file_name)
-    #    os.system(f"python3 {SCRIPTS_DIR}qstool.py --verbose --assets {STAGING_DIR+file_name} sanitize all --principal {aws_principal_id}  --region {aws_region} --slregion {aws_sl_region} --account {aws_account_id}")
-    #    os.system(f"python3 {SCRIPTS_DIR}qstool.py --verbose --assets {STAGING_DIR+file_name} delete all --confirm -i")
+    for file_name in files:
+       shutil.copy(TEMPLATES_DIR+file_name, STAGING_DIR+file_name)
+       os.system(f"python3 {SCRIPTS_DIR}qstool.py --verbose --assets {STAGING_DIR+file_name} sanitize all --principal {aws_principal_id}  --region {aws_region} --slregion {aws_sl_region} --account {aws_account_id}")
+       os.system(f"python3 {SCRIPTS_DIR}qstool.py --verbose --assets {STAGING_DIR+file_name} delete all --confirm -i")
        
     for file_name in files:
        shutil.copy(TEMPLATES_DIR+file_name, STAGING_DIR+file_name)
