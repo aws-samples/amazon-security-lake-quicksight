@@ -23,6 +23,9 @@ class CdkPermissionStack(Stack):
                  }
 
         rollup_region = self.node.try_get_context('rollup_region')
+        AWSAccountID = self.node.try_get_context('AWSAccountID')
+        SecurityLakeAccountID=self.node.try_get_context('SecurityLakeAccountID')
+
         data_lake_admin_id = self.node.try_get_context(
             'LakeFormationAdminRoleARN')
 
@@ -34,15 +37,16 @@ class CdkPermissionStack(Stack):
                 lf.CfnDataLakeSettings.DataLakePrincipalProperty(
                     data_lake_principal_identifier=data_lake_admin_id)])
 
-        security_lake_resource_link = glue.CfnDatabase(self, "SecurityLakeResourceLink",
-                                                       catalog_id=self.account,
-                                                       database_input=glue.CfnDatabase.DatabaseInputProperty(
-                                                           name=f"amazon_security_lake_glue_db_{rollup_region}",
-                                                           target_database=glue.CfnDatabase.DatabaseIdentifierProperty(
-                                                               catalog_id=security_lake_account_id.value_as_string,
-                                                               database_name=f"amazon_security_lake_glue_db_{rollup_region}"
-                                                           )
-                                                       ))
+        if AWSAccountID != SecurityLakeAccountID:
+            security_lake_resource_link = glue.CfnDatabase(self, "SecurityLakeResourceLink",
+                                                        catalog_id=self.account,
+                                                        database_input=glue.CfnDatabase.DatabaseInputProperty(
+                                                            name=f"amazon_security_lake_glue_db_{rollup_region}",
+                                                            target_database=glue.CfnDatabase.DatabaseIdentifierProperty(
+                                                                catalog_id=security_lake_account_id.value_as_string,
+                                                                database_name=f"amazon_security_lake_glue_db_{rollup_region}"
+                                                            )
+                                                        ))
 
         for key, value in permission_list.items(): 
             describe_permissions = lf.CfnPrincipalPermissions(self, "QSTablePermissionsDatabase"+key,
@@ -57,8 +61,10 @@ class CdkPermissionStack(Stack):
                                                         name=f"amazon_security_lake_glue_db_{rollup_region}"
                                                     )
                                                 ))
-            describe_permissions.add_dependency(security_lake_resource_link)
-
+            if AWSAccountID != SecurityLakeAccountID:
+                describe_permissions.add_dependency(security_lake_resource_link)
+            else:
+                describe_permissions.add_dependency(admin_permissions)
 
             for table in tables:
                 # Define the LakeFormation principal permissions
@@ -76,5 +82,3 @@ class CdkPermissionStack(Stack):
                                             )
                                         ))
                 table_permissions.add_dependency(describe_permissions)
-
-
