@@ -763,7 +763,7 @@ elif args.action in ['sanitize']:
         if not args.slregion: args.slregion = args.region # default to single region if not --slregion
         if args.slregion: args.slregion = re.sub(r'-', '_', args.slregion) # sanity check
         dirty = re.sub( r'(?i)(amazon_security_lake_glue_db_)([^_]+_[^_]+_\d+)', f'\\1<aws-security-lake-region>', dirty)       # database name
-        dirty = re.sub( r'(?i)(amazon_security_lake_table_)([^_]+_[^_]+_\d+)(_.+)', f'\\1<aws-security-lake-region>\\3', dirty)    # table name
+        dirty = re.sub( r'(?i)(amazon_security_lake_table_)(<aws-security-lake-region>)(_.+)', f'\\1<aws-security-lake-region>\\3', dirty)    # table name
         if args.slregion:
             dirty = re.sub( r'(?i)<aws-security-lake-region>', f'{args.slregion}', dirty, count=0)
 
