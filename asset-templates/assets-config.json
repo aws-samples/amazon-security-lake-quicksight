@@ -1,4 +1,7 @@
 {
+    "namespaces": {},
+	"dashboards": {},
+	"templates": {},
     "analyses": {
         "SecurityLakeExecutiveAnalysis": {
             "AnalysisId": "SecurityLakeExecutiveAnalysis",
