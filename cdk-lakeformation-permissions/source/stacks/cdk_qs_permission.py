@@ -1,5 +1,6 @@
 from constructs import Construct
 import aws_cdk as cdk
+import os
 from aws_cdk import (
     Stack,
     aws_glue as glue,
@@ -23,9 +24,8 @@ class CdkPermissionStack(Stack):
                  }
 
         rollup_region = self.node.try_get_context('rollup_region')
-        AWSAccountID = self.node.try_get_context('AWSAccountID')
-        SecurityLakeAccountID=self.node.try_get_context('SecurityLakeAccountID')
-
+        AWSAccountID = int(os.getenv('CDK_DEFAULT_ACCOUNT'))
+        SecurityLakeAccountID= int(self.node.try_get_context('SecurityLakeAccountID'))
         data_lake_admin_id = self.node.try_get_context(
             'LakeFormationAdminRoleARN')
 
