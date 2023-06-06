@@ -32,7 +32,6 @@ Edit cdk-lakeformation-permissions/source/cdk.json using the values for your spe
 3. slregion - The region where the referenced Security Lake tables reside. 
 4. LakeFormationAdminRoleArn - The Admin Role ARN used in AWS Lake Formation.
 5. SecurityLakeAccountID - The AWS Account ID which has provided the resource share to its security lake assets.
-6. AWSAccountID - The AWS Account ID in which this solution is being deployed to.
 7. QuicksightUserARN - The AWS Quicksight ARN of the Quicksight account in which this solution is being deployed to.
 
 
@@ -44,7 +43,6 @@ Edit cdk-lakeformation-permissions/source/cdk.json using the values for your spe
 		    "slregion": "<region>",
 		    "LakeFormationAdminRoleARN": "arn:aws:iam::123456789012:role/<Rolename>",
 		    "SecurityLakeAccountID": 123456789012,
-		    "AWSAccountID":555555555555,
 		    "QuickSightUserARN": "arn:aws:quicksight:<Region>:123456789012:user/default/<PrincipalId>"   
 		  }
 		}
@@ -99,7 +97,6 @@ $ qsdeploy.sh
 		    "slregion": "<region>",
 		    "LakeFormationAdminRoleARN": "arn:aws:iam::123456789012:role/<Rolename>",
 		    "SecurityLakeAccountID": 123456789012,
-		    "AWSAccountID":555555555555,
 		    "QuickSightUserARN": "arn:aws:quicksight:<Region>:123456789012:user/default/<PrincipalId>"   
 		  }
 		}
