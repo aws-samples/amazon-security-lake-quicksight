@@ -685,7 +685,7 @@
                                         "FilterListConfiguration": {
                                             "MatchOperator": "CONTAINS",
                                             "CategoryValues": [
-                                                "Refused"
+                                                "Refuse"
                                             ]
                                         }
                                     }
