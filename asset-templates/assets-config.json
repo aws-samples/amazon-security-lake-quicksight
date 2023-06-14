@@ -3313,7 +3313,7 @@
 										"FilterListConfiguration": {
 											"MatchOperator": "CONTAINS",
 											"CategoryValues": [
-												"Unresolved"
+												"Refuse"
 											]
 										}
 									}
