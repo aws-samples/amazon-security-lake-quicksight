@@ -5,7 +5,8 @@
     "region": "<region>",
     "slregion": "<region>",
     "LakeFormationAdminRoleARN": "arn:aws:iam::123456789012:role/<Rolename>",
-    "SecurityLakeAccountID": 123456789012,
+    "SecurityLakeAccountID": "123456789012",
+    "AWSAccountID": "123456789012",
     "QuickSightUserARN": "arn:aws:quicksight:<Region>:123456789012:user/default/<PrincipalId>"   
   }
 }
