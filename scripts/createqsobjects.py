@@ -13,7 +13,7 @@ with open(INPUTS_DIR) as file:
 
 aws_region = parameters['context']['region']
 aws_sl_region = parameters['context']['slregion']
-aws_account_id = parameters['context']['AWSAccountID']
+aws_account_id = parameters['context']['SecurityLakeAccountID']
 aws_principal_id = parameters['context']['QuickSightUserARN']
     
 def main(aws_region, aws_account_id, aws_principal_id):
