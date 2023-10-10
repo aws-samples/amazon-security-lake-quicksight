@@ -105,7 +105,16 @@ Run
 
 	qsdeploy.sh
 	
-	
+
+Add QuickSight Users to the appropriate Dashboard groups
+* Within QuickSight, go to your select your user profile (top-right icon)
+* Select Manage QuickSight, and then Manage Groups
+* Select the appropriate group (security-lake-executive-group, security-lake-operator-group, security-lake-custodian-group)
+* Select Add user, and add a user to the group.
+* You will have to do this for each Dashboard as needed.
+
+Once users are added into the appropriate group(s), the user will have access to the Dashboard(s)
+
 ![Solution Overview](/images/analyst.png)
 
 ![Solution Overview](/images/custodian.png)
@@ -118,7 +127,7 @@ Please refer to the following on Amazon Quicksight cost: https://aws.amazon.com/
 
 ## Dashboard Customization <a name="#DashboardCustomization"></a>
 
-This solution has been deisnged as a generally available solution for users who wish to visualize their Amazon Security Lake data. For users with specific visualization needs, the quicksight analysis has been provided in addition to the dashboards. In Amazon QuickSight, an analysis is the same thing as a dashboard, except that it can only be accessed by the authors you choose. You can keep it private, and  When and if you decide to publish it, the it can be edited to add or remove visuals before being shared as a new dashboard.For more information on how to customize the analysis provided by this solution, please refer to the following: https://docs.aws.amazon.com/quicksight/latest/user/working-with-an-analysis.html.
+This solution has been designed as a generally available solution for users who wish to visualize their Amazon Security Lake data. For users with specific visualization needs, the quicksight analysis has been provided in addition to the dashboards. In Amazon QuickSight, an analysis is the same thing as a dashboard, except that it can only be accessed by the authors you choose. You can keep it private, and  When and if you decide to publish it, the it can be edited to add or remove visuals before being shared as a new dashboard.For more information on how to customize the analysis provided by this solution, please refer to the following: https://docs.aws.amazon.com/quicksight/latest/user/working-with-an-analysis.html.
 
 ### Official Resources
 - [Amazon Security Lake Overview](https://aws.amazon.com/security-lake/)
