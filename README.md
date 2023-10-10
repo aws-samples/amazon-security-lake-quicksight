@@ -107,7 +107,7 @@ Run
 	
 
 Add QuickSight Users to the appropriate Dashboard groups
-* Within QuickSight, go to your select your user profile (top-right icon)
+* Within QuickSight, select your user profile (top-right icon)
 * Select Manage QuickSight, and then Manage Groups
 * Select the appropriate group (security-lake-executive-group, security-lake-operator-group, security-lake-custodian-group)
 * Select Add user, and add a user to the group.
