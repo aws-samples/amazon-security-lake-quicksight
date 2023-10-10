@@ -8,6 +8,8 @@
 
 ## About this Repo <a name="About"></a>
 
+NOTE: This is a sample, non-production-ready template.
+
 This repository a combinatination of CDK tools and scripts which can be used to create the required AWS objects and deploy basic datasources, datasets, analysies, dashboards, and user groups to Quicksight with respect to Amazon Security Lake.
 
 We welcome contributions to this repo in the form of fixes to existing examples or addition of new examples. For more information on contributing, please see the [CONTRIBUTING](https://github.com/aws-samples/amazon-security-lake/blob/main/CONTRIBUTING.md) guide.
@@ -107,7 +109,7 @@ Run
 	
 
 Add QuickSight Users to the appropriate Dashboard groups
-* Within QuickSight, go to your select your user profile (top-right icon)
+* Within QuickSight, select your user profile (top-right icon)
 * Select Manage QuickSight, and then Manage Groups
 * Select the appropriate group (security-lake-executive-group, security-lake-operator-group, security-lake-custodian-group)
 * Select Add user, and add a user to the group.
