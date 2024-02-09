@@ -83,6 +83,7 @@ Set environment variables or Specifies the name of the AWS CLI profile with the 
 export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
 export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 export AWS_DEFAULT_REGION=us-east-1
+export AWS_REGION=us-east-1
 ```
 
 At this point you can run script to synthesize the CloudFormation template and deploy AWS Lake Formation permissions and QuickSight dashboards.
@@ -106,9 +107,7 @@ $ ./qsdeploy.sh
 		  }
 		}
   
-Run 
 
-	./qsdeploy.sh
 	
 
 Add QuickSight Users to the appropriate Dashboard groups
