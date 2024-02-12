@@ -1,3 +1,6 @@
+
+## NOTE: This solution is pending updates for updated Security Lake tables.
+
 ## Table of Contents
 1. [About this Repo](#About)
 2. [Usage Guide](#Usage)
@@ -34,6 +37,7 @@ Edit cdk-lakeformation-permissions/source/cdk.json using the values for your spe
 3. slregion - The region where the referenced Security Lake tables reside. 
 4. LakeFormationAdminRoleArn - The Admin Role ARN used in AWS Lake Formation.
 5. SecurityLakeAccountID - The AWS Account ID which has provided the resource share to its security lake assets.
+5. AWSAccountID - The AWS Account ID from the account you are deploying the solution in with QuickSight..
 7. QuicksightUserARN - The AWS Quicksight ARN of the Quicksight account in which this solution is being deployed to.
 
 
@@ -45,6 +49,7 @@ Edit cdk-lakeformation-permissions/source/cdk.json using the values for your spe
 		    "slregion": "<region>",
 		    "LakeFormationAdminRoleARN": "arn:aws:iam::123456789012:role/<Rolename>",
 		    "SecurityLakeAccountID": 123456789012,
+		    "AWSAccountID": 555555555555,
 		    "QuickSightUserARN": "arn:aws:quicksight:<Region>:123456789012:user/default/<PrincipalId>"   
 		  }
 		}
@@ -81,12 +86,13 @@ Set environment variables or Specifies the name of the AWS CLI profile with the 
 export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
 export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 export AWS_DEFAULT_REGION=us-east-1
+export AWS_REGION=us-east-1
 ```
 
 At this point you can run script to synthesize the CloudFormation template and deploy AWS Lake Formation permissions and QuickSight dashboards.
 
 ```
-$ qsdeploy.sh
+$ ./qsdeploy.sh
 ```
 
 ## Examples <a name="Examples"></a>
@@ -99,13 +105,12 @@ $ qsdeploy.sh
 		    "slregion": "<region>",
 		    "LakeFormationAdminRoleARN": "arn:aws:iam::123456789012:role/<Rolename>",
 		    "SecurityLakeAccountID": 123456789012,
+		    "AWSAccountID": 555555555555,
 		    "QuickSightUserARN": "arn:aws:quicksight:<Region>:123456789012:user/default/<PrincipalId>"   
 		  }
 		}
   
-Run 
 
-	qsdeploy.sh
 	
 
 Add QuickSight Users to the appropriate Dashboard groups
